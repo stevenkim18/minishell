@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 16:30:38 by seunkim           #+#    #+#             */
-/*   Updated: 2020/08/11 15:02:29 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/11 15:04:16 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@
 # include <fcntl.h>
 # include <sys/wait.h>
 # include <signal.h>
-#include <criterion/criterion.h>
 
 int		get_next_line(int fd, char **line);
-
 
 #endif
