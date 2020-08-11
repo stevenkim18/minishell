@@ -1,3 +1,4 @@
-*/**/*.o
+*.o
 minishell
 test
+a.out
