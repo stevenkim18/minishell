@@ -42,6 +42,9 @@ clean:
 fclean : clean
 	rm -rf $(NAME)
 
+norm :
+	norminette $(TEST) $(SRCS) $(GNLS) ./include/minishell.h
+
 re: fclean all
 
 .PHONY: clean fclean all re
