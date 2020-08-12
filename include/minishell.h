@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 16:30:38 by seunkim           #+#    #+#             */
-/*   Updated: 2020/08/12 13:15:36 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/12 15:21:59 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@
 
 # define ENOCMD "command not found: "
 
-# define SHELL_STR "MINISHELL >>"
+# define SHELL_STR_L "MINISHELL >>"
+# define SHELL_STR_S "minishell: "
 # define NEWLINE_STR "\n"
 
 int		get_next_line(int fd, char **line);

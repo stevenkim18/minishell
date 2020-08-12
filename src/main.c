@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 16:30:00 by seunkim           #+#    #+#             */
-/*   Updated: 2020/08/12 13:23:16 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/12 15:22:30 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int		ft_handle_gnl(char **line)
 {
-	ft_putstr_fd(SHELL_STR, STDOUT);
+	ft_putstr_fd(SHELL_STR_L, STDOUT);
 	return (get_next_line(STDOUT, line));
 }
 
