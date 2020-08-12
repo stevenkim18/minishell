@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 16:30:00 by seunkim           #+#    #+#             */
-/*   Updated: 2020/08/12 10:37:38 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/12 11:22:16 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ static void		ft_handle_command(void)
 	{
 		tmp_command = command;
 		if (!(command = ft_trim_str(command)))
-			ft_end_process();
-		printf("|%s|\n", command);
+			ft_end_process(ENOMEM, NULL);
 		free(tmp_command);
+		printf("|%s|\n", command);
 		// 파싱
 		// 명령어 실행
 		free(command);
