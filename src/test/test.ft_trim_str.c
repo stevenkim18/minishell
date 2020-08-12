@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/12 09:27:32 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/12 10:13:58 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/12 10:50:55 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 
 Test(ft_trim_str, basic)
 {
-	cr_expect_str_eq(ft_tim_str("   123   "), "123");
+	cr_expect_str_eq(ft_trim_str("   123   "), "123");
 }
