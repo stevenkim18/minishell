@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 16:30:38 by seunkim           #+#    #+#             */
-/*   Updated: 2020/08/12 15:21:59 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/12 15:27:55 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@
 int		get_next_line(int fd, char **line);
 char	*ft_trim_str(const char *str);
 int		ft_handle_parsing(const char *str);
-
 
 void	ft_handle_error(const int error_num, const int exit_num,
 							void *custom_error, void *content);

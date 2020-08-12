@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/10 16:30:00 by seunkim           #+#    #+#             */
-/*   Updated: 2020/08/12 15:22:30 by dakim            ###   ########.fr       */
+/*   Created: 2020/08/12 16:04:27 by dakim             #+#    #+#             */
+/*   Updated: 2020/08/12 16:04:29 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int		ft_handle_gnl(char **line)
 	return (get_next_line(STDOUT, line));
 }
 
-static void		ft_handle_command(void)
+void			ft_handle_command(void)
 {
 	char		*command;
 	char		*tmp_command;
@@ -45,7 +45,7 @@ static void		ft_handle_command(void)
 	}
 }
 
-int				main()
+int				main(void)
 {
 	ft_handle_command();
 	return (0);
