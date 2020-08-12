@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/12 10:15:33 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/12 10:26:05 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/12 10:52:44 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void		ft_end_process(void)
 {
-	ft_putstr_fd(STDOUT, strerror(errno));
+	ft_putstr_fd(strerror(errno), STDOUT);
 	exit(1);
 }
