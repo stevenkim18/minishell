@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 16:30:00 by seunkim           #+#    #+#             */
-/*   Updated: 2020/08/12 12:46:34 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/12 12:57:17 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void		ft_handle_command(void)
 	}
 }
 
-int main()
+int				main()
 {
 	ft_handle_command();
 	return (0);
