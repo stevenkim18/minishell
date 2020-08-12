@@ -10,6 +10,10 @@ SRC = main.c
 SRC_DIR = ./src/
 SRCS = $(addprefix $(SRC_DIR), $(SRC))
 
+UTIL = ft_end_process.c
+UTIL_DIR = ./src/utils/
+UTILS = $(addprefix $(UTIL_DIR), $(UTIL))
+
 PARSING = ft_handle_parsing.c
 PARSING_DIR = ./src/parsing/
 PARSINGS = $(addprefix $(PARSING_DIR), $(PARSING))
@@ -18,29 +22,29 @@ LIB_H = -I ./src/libft
 LIB = libft.a
 
 TEST_NAME = test.out
-TEST = test.ft_trim_str.c
+TEST = test.ft_trim_str.c test.ft_handle_parsing.c
 TEST_DIR = ./src/test/
 TESTS = $(addprefix $(TEST_DIR), $(TEST))
 TEST_H = -I ~/.brew/include
 TEST_LIB = -L ~/.brew/lib -lcriterion
 
-
 INCLUDE = -I ./include
 
-SRCS_OBJ = $(SRCS:%.c=%.o)
+SRC_OBJ = $(SRCS:%.c=%.o)
 GNL_OBJ = $(GNLS:%.c=%.o)
 PARSING_OBJ = $(PARSINGS:%.c=%.o)
+UTIL_OBJ = $(UTILS:%.c=%.o)
 TEST_OBJ = $(TESTS:%.c=%.o)
 
 all: $(NAME)
 
 bonus: $(NAME)
 
-$(NAME): $(SRCS_OBJ) $(GNL_OBJ) $(PARSING_OBJ) $(LIB)
-	$(CC) $(CFLAGS) $(LIB) $(SRCS_OBJ) $(PARSING_OBJ) $(GNL_OBJ) -o $(NAME)
+$(NAME): $(SRC_OBJ) $(GNL_OBJ) $(PARSING_OBJ) $(UTIL_OBJ) $(LIB)
+	$(CC) $(CFLAGS) $(LIB) $(SRC_OBJ) $(PARSING_OBJ) $(UTIL_OBJ) $(GNL_OBJ) $(INCLUDE) $(LIB_H) -o $(NAME)
 
-test: $(GNL_OBJ) $(PARSING_OBJ) $(TEST_OBJ)
-	$(CC) $(CFLAGS) $(LIB) $(GNL_OBJ) $(PARSING_OBJ) $(TEST_OBJ) $(TEST_LIB) -o $(TEST_NAME)
+test: $(GNL_OBJ) $(PARSING_OBJ) $(TEST_OBJ) $(SRC_OBJ) $(UTIL_OBJ) $(LIB)
+	$(CC) $(CFLAGS) $(LIB) $(GNL_OBJ) $(PARSING_OBJ) $(UTIL_OBJ) $(TEST_OBJ) $(TEST_LIB) $(INCLUDE) $(LIB_H) -o $(TEST_NAME)
 
 $(LIB):
 	cd ./src/libft; make bonus
@@ -51,7 +55,7 @@ $(LIB):
 
 clean:
 	cd ./src/libft; make fclean
-	rm -rf $(SRCS_OBJ) $(GNL_OBJ) $(PARSING_OBJ) $(TEST_OBJ) $(LIB)
+	rm -rf $(SRC_OBJ) $(GNL_OBJ) $(PARSING_OBJ) $(TEST_OBJ) $(UTIL_OBJ) $(LIB) ./src/main.o
 
 fclean : clean
 	rm -rf $(NAME) $(TEST_NAME)
