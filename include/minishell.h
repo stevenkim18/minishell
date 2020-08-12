@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 16:30:38 by seunkim           #+#    #+#             */
-/*   Updated: 2020/08/12 10:27:01 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/12 10:37:25 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # include <fcntl.h>
 # include <sys/wait.h>
 # include <signal.h>
+# include <errno.h>
+# include <string.h>
 
 # define STDOUT 1
 
@@ -34,8 +36,7 @@
 # define SPACE_STR " "
 
 # define INITIAL_INT 0
-# define ECHO_INT 1
-# define PWD_INT 2
+# define ECHO_INT 1 # define PWD_INT 2
 # define EXPORT_INT 3
 # define UNSET_INT 4
 # define ENV_INT 5
@@ -43,5 +44,7 @@
 
 int		get_next_line(int fd, char **line);
 char	*ft_trim_str(const char *str);
+
+void	ft_end_process(void);
 
 #endif
