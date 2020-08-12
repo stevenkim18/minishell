@@ -6,13 +6,13 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/12 10:15:33 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/12 11:34:21 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/12 12:35:33 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void		ft_end_process(const int error_num,
+void		ft_end_process(const int error_num, const int exit_num,
 							void *custom_error, void *content)
 {
 	ft_putstr_fd("minishell: ", STDOUT);
@@ -22,5 +22,6 @@ void		ft_end_process(const int error_num,
 		ft_putstr_fd(custom_error, STDOUT);
 	if (content)
 		ft_putstr_fd(content, STDOUT);
-	exit(1);
+	if (exit_num != -1)
+		exit(exit_num);
 }

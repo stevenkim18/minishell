@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 16:30:38 by seunkim           #+#    #+#             */
-/*   Updated: 2020/08/12 11:34:08 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/12 12:35:14 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <signal.h>
 # include <errno.h>
 # include <string.h>
+# include <stdbool.h>
 
 # define STDOUT 1
 
@@ -45,13 +46,18 @@
 # define UNSET_INT 6
 # define EXIT_INT 7
 
+# define EXIT_ERROR 1
+# define EXIT_NO_ERROR 0
+# define NO_EXIT -1
+
 # define ENOCMD "command not found: "
 
 int		get_next_line(int fd, char **line);
 char	*ft_trim_str(const char *str);
 int		ft_handle_parsing(const char *str);
 
-void		ft_end_process(const int error_num,
-						void *custom_error, void *content);
+
+void	ft_end_process(const int error_num, const int exit_num,
+							void *custom_error, void *content);
 
 #endif
