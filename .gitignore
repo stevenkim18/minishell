@@ -1,3 +1,5 @@
-*/**/*.o
+*.o
 minishell
-test
+a.out
+test.out
+libft.a
