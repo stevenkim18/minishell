@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 16:30:00 by seunkim           #+#    #+#             */
-/*   Updated: 2020/08/12 09:20:17 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/12 10:37:38 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,34 @@
 
 static int		ft_handle_gnl(char **line)
 {
-	write(1, "MINISHELL >>", 13);
-	return (get_next_line(1, line));
+	ft_putstr_fd("MINISHELL >>", STDOUT);
+	return (get_next_line(STDOUT, line));
 }
 
 static void		ft_handle_command(void)
 {
 	char		*command;
+	char		*tmp_command;
 	int			read_result;
 
 	command = NULL;
 	read_result = INITIAL_INT;
 	while ((read_result = ft_handle_gnl(&command)) > 0)
 	{
-		printf("%s\n", command);
+		tmp_command = command;
+		if (!(command = ft_trim_str(command)))
+			ft_end_process();
+		printf("|%s|\n", command);
+		free(tmp_command);
 		// 파싱
 		// 명령어 실행
 		free(command);
 	}
 	if (command)
 	{
-		// 명령어 처리 필요
+		// 파싱
+		// 명령어 실행
+		// 함수 종료
 		free(command);
 	}
 }

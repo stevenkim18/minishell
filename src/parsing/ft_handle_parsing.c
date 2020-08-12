@@ -17,7 +17,7 @@ char		*ft_trim_str(const char *str)
 	char	*return_str;
 
 	if (!(return_str = ft_strtrim(str, SPACE_STR)))
-		return (NULL);
+		ft_end_process();
 	return (return_str);
 }
 
