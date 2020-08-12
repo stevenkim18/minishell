@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/12 10:15:33 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/12 12:39:23 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/12 13:22:19 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void		ft_handle_error(const int error_num, const int exit_num,
 		ft_putstr_fd(custom_error, STDOUT);
 	if (content)
 		ft_putstr_fd(content, STDOUT);
+	ft_putstr_fd(NEWLINE_STR, STDOUT);
 	if (exit_num != -1)
 		exit(exit_num);
 }
