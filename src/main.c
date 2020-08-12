@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 16:30:00 by seunkim           #+#    #+#             */
-/*   Updated: 2020/08/12 12:34:44 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/12 12:40:11 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,13 @@ static void		ft_handle_command(void)
 
 	command = NULL;
 	read_result = INITIAL_INT;
-	while ((read_result = ft_handle_gnl(&command)) > 0)
+	while (true)
 	{
+		read_result = ft_handle_gnl(&command);
+
 		tmp_command = command;
 		if (!(command = ft_trim_str(command)))
-			ft_end_process(ENOMEM, EXIT_ERROR, NULL, NULL);
+			ft_handle_error(ENOMEM, EXIT_ERROR, NULL, NULL);
 		free(tmp_command);
 		printf("|%s|\n", command);
 		// 파싱

@@ -10,7 +10,7 @@ SRC = main.c
 SRC_DIR = ./src/
 SRCS = $(addprefix $(SRC_DIR), $(SRC))
 
-UTIL = ft_end_process.c
+UTIL = ft_handle_error.c
 UTIL_DIR = ./src/utils/
 UTILS = $(addprefix $(UTIL_DIR), $(UTIL))
 
