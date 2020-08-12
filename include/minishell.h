@@ -6,12 +6,14 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 16:30:38 by seunkim           #+#    #+#             */
-/*   Updated: 2020/08/12 09:28:55 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/12 10:27:01 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
+
+# include "libft.h"
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -20,12 +22,16 @@
 # include <sys/wait.h>
 # include <signal.h>
 
+# define STDOUT 1
+
 # define ECHO_STR "echo"
 # define PWD_STR "cd"
 # define EXPORT_STR "export"
 # define UNSET_STR "unset"
 # define ENV_STR "env"
 # define EXIT_STR "exit"
+
+# define SPACE_STR " "
 
 # define INITIAL_INT 0
 # define ECHO_INT 1
@@ -36,6 +42,6 @@
 # define EXIT_INT 6
 
 int		get_next_line(int fd, char **line);
-void	*ft_calloc(size_t nelem, size_t elsize);
+char	*ft_trim_str(const char *str);
 
 #endif

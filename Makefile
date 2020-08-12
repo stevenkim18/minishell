@@ -17,8 +17,8 @@ PARSINGS = $(addprefix $(PARSING_DIR), $(PARSING))
 LIB_H = -I ./src/libft
 LIB = libft.a
 
-TEST_NAME = test
-TEST =
+TEST_NAME = test.out
+TEST = test.ft_trim_str.c
 TEST_DIR = ./src/test/
 TESTS = $(addprefix $(TEST_DIR), $(TEST))
 TEST_H = -I ~/.brew/include

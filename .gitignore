@@ -1,4 +1,5 @@
 *.o
 minishell
 a.out
+test.out
 libft.a
