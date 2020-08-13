@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 16:30:38 by seunkim           #+#    #+#             */
-/*   Updated: 2020/08/12 15:27:55 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/13 18:15:11 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@
 # define UNSET_INT 6
 # define EXIT_INT 7
 
+# define CUSTOM_ERROR -1
 # define EXIT_ERROR 1
 # define EXIT_NO_ERROR 0
 # define NO_EXIT -1
