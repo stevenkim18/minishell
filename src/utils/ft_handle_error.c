@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_handle_error.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: dakim <dakim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/12 10:15:33 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/13 18:43:00 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/15 11:52:06 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ int			ft_handle_error(const int error_num, const int exit_num,
 	int				tmp_container;
 
 	tmp_container = error_container;
-	ft_putstr_fd(SHELL_STR_S, STDOUT);
+	if (error_num < 0 && !custom_error)
+		ft_putstr_fd(SHELL_STR_S, STDOUT);
 	if (0 < error_num)
 	{
 		error_container = error_num;
@@ -39,7 +40,8 @@ int			ft_handle_error(const int error_num, const int exit_num,
 	}
 	if (content)
 		ft_putstr_fd(content, STDOUT);
-	ft_putstr_fd(NEWLINE_STR, STDOUT);
+	if (!(error_num <= 0 && !custom_error))
+		ft_putstr_fd(NEWLINE_STR, STDOUT);
 	if (exit_num != -1)
 		exit(exit_num);
 	return (tmp_container);
