@@ -14,15 +14,15 @@ UTIL = ft_handle_error.c
 UTIL_DIR = ./src/utils/
 UTILS = $(addprefix $(UTIL_DIR), $(UTIL))
 
-PARSING = ft_handle_parsing.c
-PARSING_DIR = ./src/parsing/
-PARSINGS = $(addprefix $(PARSING_DIR), $(PARSING))
+COMMAND = ft_handle_command.c ft_route_command.c
+COMMAND_DIR = ./src/command/
+COMMANDS = $(addprefix $(COMMAND_DIR), $(COMMAND))
 
 LIB_H = -I ./src/libft
 LIB = libft.a
 
 TEST_NAME = test.out
-TEST = test.ft_trim_str.c test.ft_handle_parsing.c test.ft_handle_error.c
+TEST = test.ft_trim_str.c test.ft_route_command.c test.ft_handle_error.c
 TEST_DIR = ./src/test/
 TESTS = $(addprefix $(TEST_DIR), $(TEST))
 TEST_H = -I ~/.brew/include
@@ -32,7 +32,7 @@ INCLUDE = -I ./include
 
 SRC_OBJ = $(SRCS:%.c=%.o)
 GNL_OBJ = $(GNLS:%.c=%.o)
-PARSING_OBJ = $(PARSINGS:%.c=%.o)
+COMMAND_OBJ = $(COMMANDS:%.c=%.o)
 UTIL_OBJ = $(UTILS:%.c=%.o)
 TEST_OBJ = $(TESTS:%.c=%.o)
 
@@ -46,11 +46,11 @@ all: $(NAME)
 
 bonus: $(NAME)
 
-$(NAME): $(SRC_OBJ) $(GNL_OBJ) $(PARSING_OBJ) $(UTIL_OBJ) $(LIB)
-	$(CC) $(CFLAGS) $(LIB) $(SRC_OBJ) $(PARSING_OBJ) $(UTIL_OBJ) $(GNL_OBJ) $(INCLUDE) $(LIB_H) -g -o $(NAME)
+$(NAME): $(SRC_OBJ) $(GNL_OBJ) $(COMMAND_OBJ) $(UTIL_OBJ) $(LIB)
+	$(CC) $(CFLAGS) $(LIB) $(SRC_OBJ) $(COMMAND_OBJ) $(UTIL_OBJ) $(GNL_OBJ) $(INCLUDE) $(LIB_H) -g -o $(NAME)
 
-test: $(GNL_OBJ) $(PARSING_OBJ) $(TEST_OBJ) $(SRC_OBJ) $(UTIL_OBJ) $(LIB)
-	$(CC) $(CFLAGS) $(LIB) $(GNL_OBJ) $(PARSING_OBJ) $(UTIL_OBJ) $(TEST_OBJ) $(TEST_LIB) $(INCLUDE) $(LIB_H) -o$(TEST_NAME)
+test: $(GNL_OBJ) $(COMMAND_OBJ) $(TEST_OBJ) $(SRC_OBJ) $(UTIL_OBJ) $(LIB)
+	$(CC) $(CFLAGS) $(LIB) $(GNL_OBJ) $(COMMAND_OBJ) $(UTIL_OBJ) $(TEST_OBJ) $(TEST_LIB) $(INCLUDE) $(LIB_H) -o$(TEST_NAME)
 
 $(LIB):
 	cd ./src/libft; make bonus
@@ -61,13 +61,13 @@ $(LIB):
 
 clean:
 	cd ./src/libft; make fclean
-	rm -rf $(SRC_OBJ) $(GNL_OBJ) $(PARSING_OBJ) $(TEST_OBJ) $(UTIL_OBJ) $(LIB)
+	rm -rf $(SRC_OBJ) $(GNL_OBJ) $(COMMAND_OBJ) $(TEST_OBJ) $(UTIL_OBJ) $(LIB)
 
 fclean : clean
 	rm -rf $(NAME) $(TEST_NAME)
 
 norm :
-	norminette $(TEST) $(SRCS) $(GNLS) $(PARSINGS) ./include/minishell.h
+	norminette $(TEST) $(SRCS) $(GNLS) $(COMMANDS) ./include/minishell.h
 
 re: fclean all
 
