@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 16:30:38 by seunkim           #+#    #+#             */
-/*   Updated: 2020/08/15 16:27:20 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/15 16:51:46 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,10 @@ int		ft_handle_error(const int error_num, const int exit_num,
 							void *custom_error, void *content);
 
 void	ft_pipe_init(void);
-void	ft_send_signal(int signal);
+void	ft_send_signal(const int signal);
 int		ft_get_signal(void);
 
-void	ft_end_process(int signal);
+void	ft_end_process(const int signal);
 int		ft_start_process(pid_t *pid);
 
 #endif

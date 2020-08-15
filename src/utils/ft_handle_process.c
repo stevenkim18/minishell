@@ -6,13 +6,13 @@
 /*   By: dakim <dakim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/15 15:48:21 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/15 16:33:44 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/15 16:51:28 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void		ft_end_process(int signal)
+void		ft_end_process(const int signal)
 {
 	ft_send_signal(signal);
 	exit(signal);

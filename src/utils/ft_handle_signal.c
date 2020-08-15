@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/15 14:06:02 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/15 16:36:19 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/15 16:50:17 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ void			ft_pipe_init(void)
 	}
 }
 
-void			ft_send_signal(int signal)
+void			ft_send_signal(const int signal)
 {
 	ft_putnbr_fd(signal, g_fd[WRITE]);
-	ft_putchar_fd('\n', g_fd[WRITE]);
+	ft_putstr_fd(NEWLINE_STR, g_fd[WRITE]);
 }
 
 int				ft_get_signal(void)
