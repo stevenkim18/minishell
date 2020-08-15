@@ -36,6 +36,7 @@ PARSING_OBJ = $(PARSINGS:%.c=%.o)
 UTIL_OBJ = $(UTILS:%.c=%.o)
 TEST_OBJ = $(TESTS:%.c=%.o)
 
+
 LEAK = valgrind
 LEAK_FLAG = --leak-check=full --track-origins=yes -s
 LEAK_PREFIX = ./
@@ -46,10 +47,10 @@ all: $(NAME)
 bonus: $(NAME)
 
 $(NAME): $(SRC_OBJ) $(GNL_OBJ) $(PARSING_OBJ) $(UTIL_OBJ) $(LIB)
-	$(CC) $(CFLAGS) $(LIB) $(SRC_OBJ) $(PARSING_OBJ) $(UTIL_OBJ) $(GNL_OBJ) $(INCLUDE) $(LIB_H) -o -g $(NAME)
+	$(CC) $(CFLAGS) $(LIB) $(SRC_OBJ) $(PARSING_OBJ) $(UTIL_OBJ) $(GNL_OBJ) $(INCLUDE) $(LIB_H) -o $(NAME)
 
 test: $(GNL_OBJ) $(PARSING_OBJ) $(TEST_OBJ) $(SRC_OBJ) $(UTIL_OBJ) $(LIB)
-	$(CC) $(CFLAGS) $(LIB) $(GNL_OBJ) $(PARSING_OBJ) $(UTIL_OBJ) $(TEST_OBJ) $(TEST_LIB) $(INCLUDE) $(LIB_H) -o $(TEST_NAME)
+	$(CC) $(CFLAGS) $(LIB) $(GNL_OBJ) $(PARSING_OBJ) $(UTIL_OBJ) $(TEST_OBJ) $(TEST_LIB) $(INCLUDE) $(LIB_H) -o -g $(TEST_NAME)
 
 $(LIB):
 	cd ./src/libft; make bonus
