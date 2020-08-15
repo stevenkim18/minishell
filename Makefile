@@ -10,7 +10,7 @@ SRC = main.c
 SRC_DIR = ./src/
 SRCS = $(addprefix $(SRC_DIR), $(SRC))
 
-UTIL = ft_handle_error.c
+UTIL = ft_handle_error.c ft_handle_signal.c ft_handle_process.c
 UTIL_DIR = ./src/utils/
 UTILS = $(addprefix $(UTIL_DIR), $(UTIL))
 
@@ -22,7 +22,7 @@ LIB_H = -I ./src/libft
 LIB = libft.a
 
 TEST_NAME = test.out
-TEST = test.ft_trim_str.c test.ft_route_command.c test.ft_handle_error.c
+TEST = test.ft_trim_str.c test.ft_route_command.c test.ft_handle_error.c test.ft_handle_signal.c test.ft_handle_process.c
 TEST_DIR = ./src/test/
 TESTS = $(addprefix $(TEST_DIR), $(TEST))
 TEST_H = -I ~/.brew/include

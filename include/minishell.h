@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 16:30:38 by seunkim           #+#    #+#             */
-/*   Updated: 2020/08/15 13:54:30 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/15 16:01:01 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,9 @@
 # define SHELL_STR_S "minishell: "
 # define NEWLINE_STR "\n"
 
+#define READ 0
+#define WRITE 1
+
 int		get_next_line(int fd, char **line);
 char	*ft_trim_str(const char *str);
 
@@ -67,5 +70,12 @@ int		ft_route_command(const char *str);
 
 int		ft_handle_error(const int error_num, const int exit_num,
 							void *custom_error, void *content);
+
+void	ft_pipe_init(void);
+void	ft_send_signal(int signal);
+int		ft_get_signal(void);
+
+void	ft_end_process(int signal, int exit_code);
+int		ft_start_process(pid_t *pid);
 
 #endif
