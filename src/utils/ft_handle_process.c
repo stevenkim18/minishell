@@ -1,20 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_handle_process.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dakim <dakim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/12 16:04:27 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/15 14:54:47 by dakim            ###   ########.fr       */
+/*   Created: 2020/08/15 15:48:21 by dakim             #+#    #+#             */
+/*   Updated: 2020/08/15 16:51:28 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int				main(void)
+void		ft_end_process(const int signal)
 {
-	ft_pipe_init();
-	ft_handle_command();
-	return (0);
+	ft_send_signal(signal);
+	exit(signal);
+}
+
+int			ft_start_process(pid_t *pid)
+{
+	int		wait_value;
+	int		return_value;
+
+	*pid = fork();
+	wait(&wait_value);
+	return_value = 0;
+	if (*pid != 0)
+		return_value = ft_get_signal();
+	return (return_value);
 }

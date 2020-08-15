@@ -1,20 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   test.ft_handle_process.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dakim <dakim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/12 16:04:27 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/15 14:54:47 by dakim            ###   ########.fr       */
+/*   Created: 2020/08/15 15:03:34 by dakim             #+#    #+#             */
+/*   Updated: 2020/08/15 16:27:35 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include <criterion/criterion.h>
 
-int				main(void)
+Test(ft_handle_process, basic)
 {
+	int		signal;
+	pid_t	pid;
+
 	ft_pipe_init();
-	ft_handle_command();
-	return (0);
+	signal = ft_start_process(&pid);
+	if (pid == 0)
+	{
+		ft_end_process(123);
+	}
+	else
+	{
+		cr_expect_eq(signal, 123);
+	}
+
 }
