@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/15 15:03:34 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/15 16:04:24 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/15 16:27:35 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ Test(ft_handle_process, basic)
 	signal = ft_start_process(&pid);
 	if (pid == 0)
 	{
-		ft_end_process(123, 0);
+		ft_end_process(123);
 	}
 	else
 	{
