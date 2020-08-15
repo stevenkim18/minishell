@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/15 13:50:20 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/15 13:54:16 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/15 17:12:52 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,13 @@ void			ft_handle_command(void)
 		{
 			tmp_command = command;
 			if (!(command = ft_trim_str(command)))
-				ft_handle_error(ENOMEM, EXIT_ERROR, NULL, NULL);
+				ft_handle_error(ENOMEM, NULL);
 			if (!ft_route_command(command))
-				ft_handle_error(CUSTOM_ERROR, NO_EXIT, ENOCMD, command);
+				ft_handle_error(ENOCMD, command);
 			free(tmp_command);
 		}
 		else if (read_result == -1)
-			ft_handle_error(ENOMEM, NO_EXIT, NULL, NULL);
+			ft_handle_error(ENOMEM, NULL);
 		if (command)
 			free(command);
 	}

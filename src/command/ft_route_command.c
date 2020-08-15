@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/12 15:27:38 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/15 13:53:51 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/15 17:11:43 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char		*ft_trim_str(const char *str)
 	char	*return_str;
 
 	if (!(return_str = ft_strtrim(str, SPACE_STR)))
-		ft_handle_error(ENOMEM, EXIT_ERROR, NULL, NULL);
+		ft_handle_error(ENOMEM, NULL);
 	return (return_str);
 }
 

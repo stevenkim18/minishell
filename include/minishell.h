@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 16:30:38 by seunkim           #+#    #+#             */
-/*   Updated: 2020/08/15 16:51:46 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/15 17:13:53 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,10 @@
 # define UNSET_STR "unset"
 # define EXIT_STR "exit"
 
+# define SHELL_STR_L "MINISHELL >> "
+# define SHELL_STR_S "minishell: "
+# define NEWLINE_STR "\n"
+
 # define SPACE_STR " "
 
 # define INITIAL_INT 0
@@ -47,20 +51,9 @@
 # define EXIT_INT 7
 
 # define NO_ERROR 0
-# define CUSTOM_ERROR -1
-# define EXIT_ERROR 1
-# define EXIT_NO_ERROR 0
-# define NO_EXIT -1
+# define ENOCMD 127
 
-# define ENOCMD "command not found: "
-# define ENOCMD_INT 127
-
-# define SHELL_STR_L "MINISHELL >>"
-# define SHELL_STR_S "minishell: "
-# define NEWLINE_STR "\n"
-
-#define READ 0
-#define WRITE 1
+# define ENOCMD_STR "command not found: "
 
 int		get_next_line(int fd, char **line);
 char	*ft_trim_str(const char *str);
@@ -68,8 +61,8 @@ char	*ft_trim_str(const char *str);
 void	ft_handle_command(void);
 int		ft_route_command(const char *str);
 
-int		ft_handle_error(const int error_num, const int exit_num,
-							void *custom_error, void *content);
+#define READ 0
+#define WRITE 1
 
 void	ft_pipe_init(void);
 void	ft_send_signal(const int signal);
@@ -77,5 +70,7 @@ int		ft_get_signal(void);
 
 void	ft_end_process(const int signal);
 int		ft_start_process(pid_t *pid);
+
+int		ft_handle_error(const int error_num, void *content);
 
 #endif
