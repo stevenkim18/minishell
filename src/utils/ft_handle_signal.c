@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/15 14:06:02 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/15 16:03:13 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/15 16:36:19 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ void			ft_send_signal(int signal)
 
 int				ft_get_signal(void)
 {
-	char		*line;
+	char		buffer[100];
+	int			read_result;
 	int			return_value;
 
-	if (-1 == get_next_line(g_fd[READ], &line))
-		return (ENOMEM);
-	return_value = ft_atoi(line);
-	free(line);
+	read_result = read(g_fd[READ], buffer, 100);
+	buffer[read_result] = 0;
+	return_value = ft_atoi(buffer);
 	return (return_value);
 }
