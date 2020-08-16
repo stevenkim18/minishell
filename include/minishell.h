@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 16:30:38 by seunkim           #+#    #+#             */
-/*   Updated: 2020/08/16 16:34:50 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/16 17:00:36 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@
 
 # define SHELL_STR_L "MINISHELL >> "
 # define SHELL_STR_S "minishell: "
+# define EXIT_STR "exit"
 # define NEWLINE_STR "\n"
 
 # define SPACE_STR " "
@@ -49,7 +50,6 @@
 # define ENOCMD_STR "command not found: "
 
 int		get_next_line(int fd, char **line);
-char	*ft_trim_str(const char *str);
 
 void	ft_handle_command(void);
 void	ft_route_command(const char *str);
@@ -59,7 +59,8 @@ void	ft_route_command(const char *str);
 
 void	ft_end_process(const int signal, const pid_t pid);
 void	ft_start_process(pid_t *pid);
-void	ft_exec_process(int (*ft_exec_command)(const char *), const char *command);
+void	ft_exec_process(int (*ft_exec_command)(const char *),
+						const char *command);
 
 void	ft_put_error(const int error_num);
 int		ft_handle_error(const int error_num, void *content);
@@ -78,7 +79,5 @@ void	ft_handle_parent_signal(int signal);
 void	ft_handle_child_signal(int signal);
 void	ft_register_parent_signal(void);
 void	ft_register_child_signal(void);
-
-
 
 #endif
