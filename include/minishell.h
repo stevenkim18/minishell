@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 16:30:38 by seunkim           #+#    #+#             */
-/*   Updated: 2020/08/15 17:13:53 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/16 17:00:36 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # include <stdbool.h>
 
 # define STDOUT 1
+# define STDIN 0
 
 # define ECHO_STR "echo"
 # define CD_STR "cd"
@@ -37,40 +38,46 @@
 
 # define SHELL_STR_L "MINISHELL >> "
 # define SHELL_STR_S "minishell: "
+# define EXIT_STR "exit"
 # define NEWLINE_STR "\n"
 
 # define SPACE_STR " "
 
-# define INITIAL_INT 0
-# define ECHO_INT 1
-# define CD_INT 2
-# define PWD_INT 3
-# define EXPORT_INT 4
-# define ENV_INT 5
-# define UNSET_INT 6
-# define EXIT_INT 7
-
 # define NO_ERROR 0
 # define ENOCMD 127
+# define ENOINT 130
 
 # define ENOCMD_STR "command not found: "
 
 int		get_next_line(int fd, char **line);
-char	*ft_trim_str(const char *str);
 
 void	ft_handle_command(void);
-int		ft_route_command(const char *str);
+void	ft_route_command(const char *str);
 
-#define READ 0
-#define WRITE 1
+# define READ 0
+# define WRITE 1
 
-void	ft_pipe_init(void);
-void	ft_send_signal(const int signal);
-int		ft_get_signal(void);
+void	ft_end_process(const int signal, const pid_t pid);
+void	ft_start_process(pid_t *pid);
+void	ft_exec_process(int (*ft_exec_command)(const char *),
+						const char *command);
 
-void	ft_end_process(const int signal);
-int		ft_start_process(pid_t *pid);
-
+void	ft_put_error(const int error_num);
 int		ft_handle_error(const int error_num, void *content);
+
+void	ft_open_data_pipe(void);
+void	ft_close_data_pipe(void);
+char	*ft_get_data(void);
+void	ft_send_data(char *data);
+
+void	ft_open_pipe(void);
+void	ft_close_pipe(void);
+void	ft_send_pipe(const int signal);
+int		ft_get_pipe(void);
+
+void	ft_handle_parent_signal(int signal);
+void	ft_handle_child_signal(int signal);
+void	ft_register_parent_signal(void);
+void	ft_register_child_signal(void);
 
 #endif

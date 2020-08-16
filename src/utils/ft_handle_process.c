@@ -6,27 +6,43 @@
 /*   By: dakim <dakim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/15 15:48:21 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/15 16:51:28 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/16 16:37:41 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void		ft_end_process(const int signal)
+void			ft_end_process(const int signal, const pid_t pid)
 {
-	ft_send_signal(signal);
-	exit(signal);
+	if (pid == 0)
+	{
+		ft_send_pipe(signal);
+		exit(signal);
+	}
+	else
+		ft_close_pipe();
 }
 
-int			ft_start_process(pid_t *pid)
+void			ft_start_process(pid_t *pid)
 {
 	int		wait_value;
-	int		return_value;
 
+	ft_open_pipe();
 	*pid = fork();
 	wait(&wait_value);
-	return_value = 0;
-	if (*pid != 0)
-		return_value = ft_get_signal();
-	return (return_value);
+	if (*pid == 0)
+		ft_register_child_signal();
+}
+
+void			ft_exec_process(int (*ft_exec_command)(const char *),
+								const char *command)
+{
+	pid_t		pid;
+	int			command_result;
+
+	ft_start_process(&pid);
+	command_result = 0;
+	if (pid == 0)
+		command_result = ft_exec_command(command);
+	ft_end_process(command_result, pid);
 }

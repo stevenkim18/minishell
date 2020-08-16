@@ -5,38 +5,35 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dakim <dakim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/15 14:06:02 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/15 16:50:17 by dakim            ###   ########.fr       */
+/*   Created: 2020/08/16 15:11:17 by dakim             #+#    #+#             */
+/*   Updated: 2020/08/16 16:38:10 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static int		g_fd[2];
-
-void			ft_pipe_init(void)
+void			ft_handle_parent_signal(int signal)
 {
-	while (true)
+	if (SIGCHLD == signal)
 	{
-		if (-1 != pipe(g_fd))
-			break ;
+		ft_put_error(ft_get_pipe());
+		printf("end process\n");
 	}
 }
 
-void			ft_send_signal(const int signal)
+void			ft_handle_child_signal(int signal)
 {
-	ft_putnbr_fd(signal, g_fd[WRITE]);
-	ft_putstr_fd(NEWLINE_STR, g_fd[WRITE]);
+	if (SIGINT == signal)
+		ft_end_process(ENOINT, 0);
 }
 
-int				ft_get_signal(void)
+void			ft_register_parent_signal(void)
 {
-	char		buffer[100];
-	int			read_result;
-	int			return_value;
+	signal(SIGINT, ft_handle_parent_signal);
+	signal(SIGCHLD, ft_handle_parent_signal);
+}
 
-	read_result = read(g_fd[READ], buffer, 100);
-	buffer[read_result] = 0;
-	return_value = ft_atoi(buffer);
-	return (return_value);
+void			ft_register_child_signal(void)
+{
+	signal(SIGINT, ft_handle_child_signal);
 }
