@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 16:30:38 by seunkim           #+#    #+#             */
-/*   Updated: 2020/08/16 15:30:34 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/16 15:59:57 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int		get_next_line(int fd, char **line);
 char	*ft_trim_str(const char *str);
 
 void	ft_handle_command(void);
-int		ft_route_command(const char *str);
+void	ft_route_command(const char *str);
 
 # define READ 0
 # define WRITE 1
