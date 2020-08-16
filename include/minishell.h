@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 16:30:38 by seunkim           #+#    #+#             */
-/*   Updated: 2020/08/16 15:10:36 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/16 15:24:33 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@
 
 # define NO_ERROR 0
 # define ENOCMD 127
+# define ENOINT 130
 
 # define ENOCMD_STR "command not found: "
 
@@ -66,7 +67,7 @@ int		ft_route_command(const char *str);
 # define WRITE 1
 
 void	ft_end_process(const int signal, const pid_t pid);
-int		ft_start_process(pid_t *pid);
+void	ft_start_process(pid_t *pid);
 
 int		ft_handle_error(const int error_num, void *content);
 

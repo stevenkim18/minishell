@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/15 15:48:21 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/16 15:07:00 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/16 15:26:30 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,13 @@ void			ft_end_process(const int signal, const pid_t pid)
 		ft_close_pipe();
 }
 
-int				ft_start_process(pid_t *pid)
+void			ft_start_process(pid_t *pid)
 {
 	int		wait_value;
-	int		return_value;
 
 	ft_open_pipe();
 	*pid = fork();
 	wait(&wait_value);
-	return_value = 0;
-	if (*pid != 0)
-		return_value = ft_get_pipe();
-	else
+	if (*pid == 0)
 		ft_register_child_signal();
-	return (return_value);
 }
