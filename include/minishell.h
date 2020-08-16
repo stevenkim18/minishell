@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 16:30:38 by seunkim           #+#    #+#             */
-/*   Updated: 2020/08/16 16:16:20 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/16 16:34:50 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,6 @@
 
 # define SPACE_STR " "
 
-# define INITIAL_INT 0
-# define ECHO_INT 1
-# define CD_INT 2
-# define PWD_INT 3
-# define EXPORT_INT 4
-# define ENV_INT 5
-# define UNSET_INT 6
-# define EXIT_INT 7
-
 # define NO_ERROR 0
 # define ENOCMD 127
 # define ENOINT 130
@@ -68,6 +59,7 @@ void	ft_route_command(const char *str);
 
 void	ft_end_process(const int signal, const pid_t pid);
 void	ft_start_process(pid_t *pid);
+void	ft_exec_process(int (*ft_exec_command)(const char *), const char *command);
 
 void	ft_put_error(const int error_num);
 int		ft_handle_error(const int error_num, void *content);

@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/15 16:33:17 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/16 15:32:04 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/16 16:38:55 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ static void		ft_print_custom_error(const int error_num)
 void			ft_put_error(const int error_num)
 {
 	g_error_num = error_num;
+	printf("%d\n", g_error_num);
 }
 
 int				ft_handle_error(const int error_num, void *content)

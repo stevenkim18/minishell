@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/15 13:50:20 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/16 16:03:32 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/16 16:32:08 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void			ft_handle_command(void)
 	int			read_result;
 
 	command = NULL;
-	read_result = INITIAL_INT;
+	read_result = 0;
 	while ((read_result = ft_handle_gnl(&command)))
 	{
 		if (0 < read_result)

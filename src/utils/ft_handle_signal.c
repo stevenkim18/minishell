@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/16 15:11:17 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/16 15:31:21 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/16 16:38:10 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 void			ft_handle_parent_signal(int signal)
 {
 	if (SIGCHLD == signal)
+	{
 		ft_put_error(ft_get_pipe());
+		printf("end process\n");
+	}
 }
 
 void			ft_handle_child_signal(int signal)
