@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 16:30:38 by seunkim           #+#    #+#             */
-/*   Updated: 2020/08/16 15:24:33 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/16 15:30:34 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int		ft_route_command(const char *str);
 void	ft_end_process(const int signal, const pid_t pid);
 void	ft_start_process(pid_t *pid);
 
+void	ft_put_error(const int error_num);
 int		ft_handle_error(const int error_num, void *content);
 
 void	ft_open_data_pipe(void);
