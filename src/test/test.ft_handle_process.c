@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/15 15:03:34 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/15 17:23:17 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/16 12:55:10 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,8 @@ Test(ft_handle_process, basic)
 	int		signal;
 	pid_t	pid;
 
-	ft_pipe_init();
+	ft_open_pipe();
 	signal = ft_start_process(&pid);
-	if (pid == 0)
-	{
-		ft_end_process(123);
-	}
-	else
-	{
-		cr_expect_eq(signal, 123);
-	}
-
+	ft_end_process(123, pid);
+	cr_expect_eq(signal, 123);
 }

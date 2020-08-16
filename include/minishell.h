@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 16:30:38 by seunkim           #+#    #+#             */
-/*   Updated: 2020/08/15 17:13:53 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/16 12:50:02 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # include <stdbool.h>
 
 # define STDOUT 1
+# define STDIN 0
 
 # define ECHO_STR "echo"
 # define CD_STR "cd"
@@ -64,11 +65,12 @@ int		ft_route_command(const char *str);
 #define READ 0
 #define WRITE 1
 
-void	ft_pipe_init(void);
+void	ft_open_pipe(void);
+void	ft_close_pipe(void);
 void	ft_send_signal(const int signal);
 int		ft_get_signal(void);
 
-void	ft_end_process(const int signal);
+void	ft_end_process(const int signal, const pid_t pid);
 int		ft_start_process(pid_t *pid);
 
 int		ft_handle_error(const int error_num, void *content);

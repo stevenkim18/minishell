@@ -6,16 +6,19 @@
 /*   By: dakim <dakim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/15 15:48:21 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/15 16:51:28 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/16 12:50:10 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void		ft_end_process(const int signal)
+void		ft_end_process(const int signal, const pid_t pid)
 {
-	ft_send_signal(signal);
-	exit(signal);
+	if (pid == 0)
+	{
+		ft_send_signal(signal);
+		exit(signal);
+	}
 }
 
 int			ft_start_process(pid_t *pid)
