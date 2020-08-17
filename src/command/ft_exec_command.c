@@ -31,7 +31,7 @@ void		ft_exec_command(const char *str)
 		else if (ft_strnstr(str, CD_STR, ft_strlen(CD_STR)))
 			ft_exec_process(ft_test, str);
 		else if (ft_strnstr(str, PWD_STR, ft_strlen(PWD_STR)))
-			ft_exec_process(ft_test, str);
+			ft_exec_process(ft_handle_pwd, str);
 		else if (ft_strnstr(str, EXPORT_STR, ft_strlen(EXPORT_STR)))
 			ft_exec_process(ft_test, str);
 		else if (ft_strnstr(str, ENV_STR, ft_strlen(ENV_STR)))

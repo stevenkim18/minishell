@@ -3,22 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dakim </var/mail/dakim>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/17 15:13:16 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/17 15:13:29 by dakim            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dakim <dakim@student.42.fr>                +#+  +:+       +#+        */
+/*   By: stevenkim <stevenkim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 16:30:38 by seunkim           #+#    #+#             */
-/*   Updated: 2020/08/17 15:10:06 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/17 18:27:03 by stevenkim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +79,8 @@ void	ft_handle_parent_signal(int signal);
 void	ft_handle_child_signal(int signal);
 void	ft_register_parent_signal(void);
 void	ft_register_child_signal(void);
+
+int     ft_handle_pwd(const char *command);
+
 
 #endif
