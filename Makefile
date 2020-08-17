@@ -14,7 +14,7 @@ UTIL = ft_handle_error.c ft_handle_pipe.c ft_handle_process.c ft_handle_signal.c
 UTIL_DIR = ./src/utils/
 UTILS = $(addprefix $(UTIL_DIR), $(UTIL))
 
-COMMAND = ft_handle_command.c ft_route_command.c
+COMMAND = ft_handle_command.c ft_exec_command.c
 COMMAND_DIR = ./src/command/
 COMMANDS = $(addprefix $(COMMAND_DIR), $(COMMAND))
 
