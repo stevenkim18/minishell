@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 16:30:38 by seunkim           #+#    #+#             */
-/*   Updated: 2020/08/19 13:30:57 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/19 13:49:22 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,12 @@ void	ft_send_int(const int signal, int fd[2]);
 int		ft_get_int(int fd[2]);
 void	ft_send_str(char *str, int fd[2]);
 char	*ft_get_str(int fd[2]);
+
+int		*ft_get_data_pipe(void);
+int		*ft_get_error_pipe(void);
+int		*ft_get_index_pipe(void);
+int		ft_get_index(void);
+void	ft_set_index(int index);
 
 void	ft_handle_parent_signal(int signal);
 void	ft_handle_child_signal(int signal);
