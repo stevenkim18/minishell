@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 16:30:38 by seunkim           #+#    #+#             */
-/*   Updated: 2020/08/19 16:09:55 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/19 16:25:00 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@
 # define ENOCMD_STR "command not found: "
 # define ENOTKN_STR "syntax error near unexpected token "
 # define ENOTKN_S "`;\'"
-# define ENOTKN_P "\'|\'"
+# define ENOTKN_P "`|\'"
 
 int		get_next_line(int fd, char **line);
 char	*ft_trim_str(const char *str);
@@ -88,6 +88,7 @@ void	ft_register_parent_signal(void);
 void	ft_register_child_signal(void);
 
 int		ft_verify_pipe(const char *command);
+int		ft_verify_semicolon(const char *command);
 
 void	ft_handle_command(void);
 void	ft_exec_command(const char *str, int *index);
