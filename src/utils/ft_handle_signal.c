@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_handle_signal.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dakim <dakim@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/16 15:11:17 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/17 15:17:28 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/19 14:10:52 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,16 @@
 void			ft_handle_parent_signal(int signal)
 {
 	if (SIGCHLD == signal)
-		ft_put_error(ft_get_pipe());
+	{
+		ft_put_error(ft_get_int(ft_get_error_pipe()));
+		ft_set_index(ft_get_int(ft_get_index_pipe()));
+	}
 }
 
 void			ft_handle_child_signal(int signal)
 {
 	if (SIGINT == signal)
-		ft_end_process(ENOINT, 0);
+		ft_end_process(ENOINT, 0, 0);
 }
 
 void			ft_register_parent_signal(void)
