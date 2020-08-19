@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stevenkim <stevenkim@student.42.fr>        +#+  +:+       +#+        */
+/*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 16:30:38 by seunkim           #+#    #+#             */
-/*   Updated: 2020/08/17 18:27:03 by stevenkim        ###   ########.fr       */
+/*   Updated: 2020/08/19 13:03:09 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int		get_next_line(int fd, char **line);
 
 void	ft_handle_command(void);
 void	ft_exec_command(const char *str);
+char	*ft_trim_str(const char *str);
 
 # define READ 0
 # define WRITE 1

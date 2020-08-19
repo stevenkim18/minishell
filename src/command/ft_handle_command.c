@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_handle_command.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dakim <dakim@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/15 13:50:20 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/17 15:10:39 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/19 13:02:34 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int		ft_handle_gnl(char **line)
 	return (get_next_line(STDOUT, line));
 }
 
-static char		*ft_trim_str(const char *str)
+char			*ft_trim_str(const char *str)
 {
 	char	*return_str;
 
