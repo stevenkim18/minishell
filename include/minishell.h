@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 16:30:38 by seunkim           #+#    #+#             */
-/*   Updated: 2020/08/19 13:03:09 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/19 13:30:57 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,15 +66,12 @@ void	ft_exec_process(int (*ft_exec_command)(const char *),
 void	ft_put_error(const int error_num);
 int		ft_handle_error(const int error_num, void *content);
 
-void	ft_open_data_pipe(void);
-void	ft_close_data_pipe(void);
-char	*ft_get_data(void);
-void	ft_send_data(char *data);
-
-void	ft_open_pipe(void);
-void	ft_close_pipe(void);
-void	ft_send_pipe(const int signal);
-int		ft_get_pipe(void);
+void	ft_open_pipe(int fd[2]);
+void	ft_close_pipe(int fd[2]);
+void	ft_send_int(const int signal, int fd[2]);
+int		ft_get_int(int fd[2]);
+void	ft_send_str(char *str, int fd[2]);
+char	*ft_get_str(int fd[2]);
 
 void	ft_handle_parent_signal(int signal);
 void	ft_handle_child_signal(int signal);
