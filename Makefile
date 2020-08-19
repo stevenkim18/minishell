@@ -22,7 +22,7 @@ LIB_H = -I ./src/libft
 LIB = libft.a
 
 TEST_NAME = test.out
-TEST = test.ft_trim_str.c test.ft_handle_pipe.c test.ft_handle_error.c test.ft_get_char.c test.ft_verify_pipe.c test.ft_verify_semicolon.c
+TEST = test.ft_trim_str.c test.ft_handle_pipe.c test.ft_handle_error.c test.ft_get_char.c test.ft_verify_pipe.c test.ft_verify_semicolon.c test.ft_verify_command.c
 TEST_DIR = ./src/test/
 TESTS = $(addprefix $(TEST_DIR), $(TEST))
 TEST_H = -I ~/.brew/include

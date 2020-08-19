@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/15 13:50:20 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/19 14:47:42 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/19 17:23:59 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ static void		ft_handle_read_result(char **command)
 	tmp_str = *command;
 	if (!(*command = ft_trim_str(*command)))
 		ft_handle_error(ENOMEM, NULL);
+	if (ft_verify_command(*command))
+		return ;
 	ft_set_index(0);
 	ft_exec_commnad_recursion(*command);
 	free(tmp_str);

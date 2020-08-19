@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/19 15:10:50 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/19 17:03:36 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/19 17:15:12 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,17 @@ int			ft_verify_semicolon(const char *command)
 	return (NO_ERROR);
 }
 
-/*
 int			ft_verify_command(const char *command)
 {
+	int		index;
 
-
+	index = -1;
+	while (*(command + ++index))
+	{
+		if (ENOTKN == ft_verify_semicolon(command + index))
+			return (ENOTKN);
+		else if ((ENOTKN == ft_verify_pipe(command + index)))
+			return (ENOTKN);
+	}
+	return (NO_ERROR);
 }
-*/
