@@ -6,13 +6,13 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/15 15:48:21 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/19 14:07:49 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/19 14:18:59 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void			ft_end_process(const int error, const int index, const pid_t pid)
+void			ft_end_process(const int error, int index, const pid_t pid)
 {
 	if (pid == 0)
 	{
@@ -41,8 +41,8 @@ void			ft_start_process(pid_t *pid)
 		ft_register_child_signal();
 }
 
-void			ft_exec_process(int (*ft_exec_command)(const char *, const int *),
-								const char *command, const int *index)
+void			ft_exec_process(int (*ft_exec_command)(const char *, int *),
+								const char *command, int *index)
 {
 	pid_t		pid;
 	int			command_result;

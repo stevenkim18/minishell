@@ -12,36 +12,37 @@
 
 #include "minishell.h"
 
-int			ft_test(const char *str)
+int			ft_test(const char *str, int *index)
 {
 	if (*str)
 	{
-		ft_putstr_fd((char *)str, STDOUT);
+		write(STDOUT, (str + *index), 1);
 		ft_putstr_fd(NEWLINE_STR, STDOUT);
+		++(*index);
 	}
 	return (ENOCMD);
 }
 
-void		ft_exec_command(const char *str)
+void		ft_exec_command(const char *str, int *index)
 {
 	if (str)
 	{
 		if (ft_strnstr(str, ECHO_STR, ft_strlen(ECHO_STR)))
-			ft_exec_process(ft_test, str);
+			ft_exec_process(ft_test, str, index);
 		else if (ft_strnstr(str, CD_STR, ft_strlen(CD_STR)))
-			ft_exec_process(ft_test, str);
+			ft_exec_process(ft_test, str, index);
 		else if (ft_strnstr(str, PWD_STR, ft_strlen(PWD_STR)))
-			ft_exec_process(ft_handle_pwd, str);
+			ft_exec_process(ft_test, str, index);
 		else if (ft_strnstr(str, EXPORT_STR, ft_strlen(EXPORT_STR)))
-			ft_exec_process(ft_test, str);
+			ft_exec_process(ft_test, str, index);
 		else if (ft_strnstr(str, ENV_STR, ft_strlen(ENV_STR)))
-			ft_exec_process(ft_test, str);
+			ft_exec_process(ft_test, str, index);
 		else if (ft_strnstr(str, UNSET_STR, ft_strlen(UNSET_STR)))
-			ft_exec_process(ft_test, str);
+			ft_exec_process(ft_test, str, index);
 		else if (ft_strnstr(str, EXIT_STR, ft_strlen(EXIT_STR)))
-			ft_exec_process(ft_test, str);
+			ft_exec_process(ft_test, str, index);
 		else
-			ft_exec_process(ft_test, str);
+			ft_exec_process(ft_test, str, index);
 	}
 	else
 		ft_handle_error(ENOMEM, NULL);

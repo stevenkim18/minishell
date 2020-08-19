@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/15 13:50:20 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/19 13:02:34 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/19 14:20:53 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,13 @@ char			*ft_trim_str(const char *str)
 static void		ft_handle_read_result(char **command)
 {
 	char		*tmp_str;
+	int			index;
 
+	index = 0;
 	tmp_str = *command;
 	if (!(*command = ft_trim_str(*command)))
 		ft_handle_error(ENOMEM, NULL);
-	ft_exec_command(*command);
+	ft_exec_command(*command, &index);
 	free(tmp_str);
 }
 

@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 16:30:38 by seunkim           #+#    #+#             */
-/*   Updated: 2020/08/19 14:08:05 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/19 14:19:46 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,16 +52,16 @@
 int		get_next_line(int fd, char **line);
 
 void	ft_handle_command(void);
-void	ft_exec_command(const char *str);
+void	ft_exec_command(const char *str, int *index);
 char	*ft_trim_str(const char *str);
 
 # define READ 0
 # define WRITE 1
 
-void			ft_end_process(const int error, const int index, const pid_t pid);
-void			ft_start_process(pid_t *pid);
-void			ft_exec_process(int (*ft_exec_command)(const char *, const int *),
-								const char *command, const int *index);
+void	ft_end_process(const int error, int index, const pid_t pid);
+void	ft_start_process(pid_t *pid);
+void	ft_exec_process(int (*ft_exec_command)(const char *, int *),
+								const char *command, int *index);
 
 void	ft_put_error(const int error_num);
 int		ft_handle_error(const int error_num, void *content);
