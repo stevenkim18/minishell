@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_test.c                                  :+:      :+:    :+:   */
+/*   ft_exec_command.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dakim <dakim@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/12 15:27:38 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/17 15:16:15 by dakim            ###   ########.fr       */
+/*   Created: 2020/08/19 14:54:07 by dakim             #+#    #+#             */
+/*   Updated: 2020/08/19 14:54:22 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,13 @@ int			ft_test(const char *str, int *index)
 	if (*str)
 	{
 		write(STDOUT, (str + *index), 1);
-		ft_putstr_fd(NEWLINE_STR, STDOUT);
 		++(*index);
+		while (*(str + *index)
+		&& *(str + *index) != ';' && *(str + *index) != '|')
+		{
+			write(STDOUT, (str + *index), 1);
+			++(*index);
+		}
 	}
 	return (ENOCMD);
 }
