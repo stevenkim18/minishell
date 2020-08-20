@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/16 15:11:17 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/20 13:59:43 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/20 14:01:37 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void			ft_handle_parent_signal(int signal)
 	}
 	else if (SIGINT == signal || SIGQUIT == signal)
 	{
-		ft_putstr_fd("\b\b  \b\b", STDOUT);
+		ft_putstr_fd(IGNORE_INT, STDOUT);
 		if (SIGINT == signal)
 		{
 			ft_putstr_fd(NEWLINE_STR, STDOUT);

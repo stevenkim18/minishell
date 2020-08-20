@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 16:30:38 by seunkim           #+#    #+#             */
-/*   Updated: 2020/08/20 13:58:43 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/20 14:01:26 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@
 # define SPACE_STR " "
 # define SEMICOLON_STR ";"
 # define PIPE_STR "|"
+
+# define IGNORE_INT "\b\b  \b\b"
 
 # define NO_ERROR 0
 # define ENOINT_P 1
