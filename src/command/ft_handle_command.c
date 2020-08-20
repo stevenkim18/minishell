@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/15 13:50:20 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/20 14:23:34 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/20 14:25:38 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,6 @@ char			*ft_trim_str(const char *str)
 	return (return_str);
 }
 
-static void		ft_exec_commnad_recursion(const char *command)
-{
-	int			index;
-
-	index = ft_get_index();
-	ft_route_command(command, &index);
-	if (*(command + ft_get_index()))
-		ft_exec_commnad_recursion(command);
-}
-
 static void		ft_handle_read_result(char **command)
 {
 	char		*tmp_str;
@@ -47,7 +37,7 @@ static void		ft_handle_read_result(char **command)
 	if (ft_verify_command(*command))
 		return ;
 	ft_set_index(0);
-	ft_exec_commnad_recursion(*command);
+	ft_exec_commnad(*command);
 	free(tmp_str);
 }
 
