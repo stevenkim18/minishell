@@ -10,11 +10,11 @@ SRC = main.c
 SRC_DIR = ./src/
 SRCS = $(addprefix $(SRC_DIR), $(SRC))
 
-UTIL = ft_handle_error.c ft_handle_pipe.c ft_handle_process.c ft_handle_signal.c ft_handle_data.c
+UTIL = ft_handle_error.c ft_handle_pipe_one.c ft_handle_pipe_two.c ft_handle_process.c ft_handle_signal.c ft_handle_static.c
 UTIL_DIR = ./src/utils/
 UTILS = $(addprefix $(UTIL_DIR), $(UTIL))
 
-COMMAND = ft_handle_command.c ft_exec_command.c ft_handle_pwd.c
+COMMAND = ft_handle_command.c ft_exec_command.c ft_handle_pwd.c ft_verify_command.c
 COMMAND_DIR = ./src/command/
 COMMANDS = $(addprefix $(COMMAND_DIR), $(COMMAND))
 
@@ -22,11 +22,12 @@ LIB_H = -I ./src/libft
 LIB = libft.a
 
 TEST_NAME = test.out
-TEST = test.ft_trim_str.c test.ft_handle_error.c test.ft_handle_pipe.c test.ft_handle_data.c
+TEST = test.ft_trim_str.c test.ft_handle_pipe.c test.ft_handle_error.c test.ft_get_char.c test.ft_verify_pipe.c test.ft_verify_semicolon.c test.ft_verify_command.c
 TEST_DIR = ./src/test/
 TESTS = $(addprefix $(TEST_DIR), $(TEST))
 TEST_H = -I ~/.brew/include
-TEST_LIB = -L ~/.brew/lib -lcriterion
+# TEST_LIB = -L ~/.brew/lib -lcriterion
+TEST_LIB_TMP = -lcriterion
 
 INCLUDE = -I ./include
 
@@ -50,7 +51,8 @@ $(NAME): $(SRC_OBJ) $(GNL_OBJ) $(COMMAND_OBJ) $(UTIL_OBJ) $(LIB)
 	$(CC) $(CFLAGS) $(LIB) $(SRC_OBJ) $(COMMAND_OBJ) $(UTIL_OBJ) $(GNL_OBJ) $(INCLUDE) $(LIB_H) -g -o $(NAME)
 
 test: $(GNL_OBJ) $(COMMAND_OBJ) $(TEST_OBJ) $(SRC_OBJ) $(UTIL_OBJ) $(LIB)
-	$(CC) $(CFLAGS) $(LIB) $(GNL_OBJ) $(COMMAND_OBJ) $(UTIL_OBJ) $(TEST_OBJ) $(TEST_LIB) $(INCLUDE) $(LIB_H) -o$(TEST_NAME)
+	# $(CC) $(CFLAGS) $(LIB) $(GNL_OBJ) $(COMMAND_OBJ) $(UTIL_OBJ) $(TEST_OBJ) $(TEST_LIB) $(INCLUDE) $(LIB_H) -o$(TEST_NAME)
+	$(CC) $(CFLAGS) $(LIB) $(GNL_OBJ) $(COMMAND_OBJ) $(UTIL_OBJ) $(TEST_OBJ) $(TEST_LIB_TMP) $(INCLUDE) $(LIB_H) -o$(TEST_NAME)
 
 $(LIB):
 	cd ./src/libft; make bonus

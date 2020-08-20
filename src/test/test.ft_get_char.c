@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   test.ft_get_char.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/12 16:04:27 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/19 14:11:14 by dakim            ###   ########.fr       */
+/*   Created: 2020/08/19 15:32:52 by dakim             #+#    #+#             */
+/*   Updated: 2020/08/19 15:37:30 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include <criterion/criterion.h>
 
-int				main(void)
+Test(ft_get_char, basic)
 {
-	ft_register_parent_signal();
-	ft_handle_command();
-	return (0);
+	char *str = "123;123123|";
+	cr_expect_str_eq(ft_strnstr(str, ";", ft_strlen(str)), ";123123|");
+	cr_expect_str_eq(ft_strnstr(str, "|", ft_strlen(str)), "|");
 }
+
