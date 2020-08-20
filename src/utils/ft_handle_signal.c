@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/16 15:11:17 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/20 14:10:19 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/20 15:43:06 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void			ft_handle_parent_signal(int signal)
 	{
 		ft_put_error(ft_get_int(ft_get_error_pipe()));
 		ft_set_index(ft_get_int(ft_get_index_pipe()));
-		ft_putstr_fd("end process\n", STDOUT);
 	}
 	else if (SIGINT == signal || SIGQUIT == signal)
 	{

@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/19 14:54:07 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/20 15:39:48 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/20 15:45:15 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,19 @@ static void		ft_route_command(const char *str, int *index)
 {
 	if (str)
 	{
-		if (ft_strnstr(str, ECHO_STR, ft_strlen(ECHO_STR)))
+		if (ft_strnstr(str + *index, ECHO_STR, ft_strlen(ECHO_STR)))
 			ft_exec_process(ft_test, str, index);
-		else if (ft_strnstr(str, CD_STR, ft_strlen(CD_STR)))
+		else if (ft_strnstr(str + *index, CD_STR, ft_strlen(CD_STR)))
 			ft_exec_process(ft_test, str, index);
-		else if (ft_strnstr(str, PWD_STR, ft_strlen(PWD_STR)))
+		else if (ft_strnstr(str + *index, PWD_STR, ft_strlen(PWD_STR)))
 			ft_exec_process(ft_handle_pwd, str, index);
-		else if (ft_strnstr(str, EXPORT_STR, ft_strlen(EXPORT_STR)))
+		else if (ft_strnstr(str + *index, EXPORT_STR, ft_strlen(EXPORT_STR)))
 			ft_exec_process(ft_test, str, index);
-		else if (ft_strnstr(str, ENV_STR, ft_strlen(ENV_STR)))
+		else if (ft_strnstr(str + *index, ENV_STR, ft_strlen(ENV_STR)))
 			ft_exec_process(ft_test, str, index);
-		else if (ft_strnstr(str, UNSET_STR, ft_strlen(UNSET_STR)))
+		else if (ft_strnstr(str + *index, UNSET_STR, ft_strlen(UNSET_STR)))
 			ft_exec_process(ft_test, str, index);
-		else if (ft_strnstr(str, EXIT_STR, ft_strlen(EXIT_STR)))
+		else if (ft_strnstr(str + *index, EXIT_STR, ft_strlen(EXIT_STR)))
 		{
 			exit(0);
 		}
@@ -63,5 +63,5 @@ void			ft_exec_commnad(const char *command)
 	index = ft_get_index();
 	ft_route_command(command, &index);
 	if (*(command + ft_get_index()))
-		ft_exec_commnad(command + ft_get_index());
+		ft_exec_commnad(command);
 }
