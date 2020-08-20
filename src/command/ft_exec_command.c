@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/19 14:54:07 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/20 15:45:15 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/20 16:18:46 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,23 +29,39 @@ int			ft_test(const char *str, int *index)
 	return (ENOCMD);
 }
 
+static int		ft_get_str_location(const char *str, int *index)
+{
+	int			i;
+
+	i = *index;
+	if (*(str + i) == ';' || *(str + i) == '|')
+		++i;
+	while (*(str + i) == ' ')
+		++i;
+	return (i);
+}
+
 static void		ft_route_command(const char *str, int *index)
 {
+	int			i;
+
+	i = 0;
 	if (str)
 	{
-		if (ft_strnstr(str + *index, ECHO_STR, ft_strlen(ECHO_STR)))
+		i = ft_get_str_location(str, index);
+		if (ft_strnstr(str + i, ECHO_STR, ft_strlen(ECHO_STR)))
 			ft_exec_process(ft_test, str, index);
-		else if (ft_strnstr(str + *index, CD_STR, ft_strlen(CD_STR)))
+		else if (ft_strnstr(str + i, CD_STR, ft_strlen(CD_STR)))
 			ft_exec_process(ft_test, str, index);
-		else if (ft_strnstr(str + *index, PWD_STR, ft_strlen(PWD_STR)))
+		else if (ft_strnstr(str + i, PWD_STR, ft_strlen(PWD_STR)))
 			ft_exec_process(ft_handle_pwd, str, index);
-		else if (ft_strnstr(str + *index, EXPORT_STR, ft_strlen(EXPORT_STR)))
+		else if (ft_strnstr(str + i, EXPORT_STR, ft_strlen(EXPORT_STR)))
 			ft_exec_process(ft_test, str, index);
-		else if (ft_strnstr(str + *index, ENV_STR, ft_strlen(ENV_STR)))
+		else if (ft_strnstr(str + i, ENV_STR, ft_strlen(ENV_STR)))
 			ft_exec_process(ft_test, str, index);
-		else if (ft_strnstr(str + *index, UNSET_STR, ft_strlen(UNSET_STR)))
+		else if (ft_strnstr(str + i, UNSET_STR, ft_strlen(UNSET_STR)))
 			ft_exec_process(ft_test, str, index);
-		else if (ft_strnstr(str + *index, EXIT_STR, ft_strlen(EXIT_STR)))
+		else if (ft_strnstr(str + i, EXIT_STR, ft_strlen(EXIT_STR)))
 		{
 			exit(0);
 		}
