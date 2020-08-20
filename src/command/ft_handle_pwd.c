@@ -3,38 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   ft_handle_pwd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: stevenkim <stevenkim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/17 18:23:46 by seunkim           #+#    #+#             */
-/*   Updated: 2020/08/19 15:09:48 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/20 15:29:07 by stevenkim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char    *ft_return_end(const char *command)
+void    ft_return_end(const char *command, int *index)
 {
-	int		i;
-
-	i = 0;
-	while (command[i])
+	while (command[*index])
 	{
-		if (command[i] == 0 || command[i] == ';' || command[i] == '|')
-			return (((char *)command) + i);
-		i++;
+		if (command[*index] == 0 || command[*index] == ';' || command[*index] == '|')
+			return ;
+		(*index)++;
 	}
-	return (NULL);
 }
 
-int     ft_handle_pwd(const char *command)
+int     ft_handle_pwd(const char *command, int *index)
 {
 	char	buff[1024];
-	char	*tmp;
 
-	tmp = ft_return_end(command);
-	printf("p = %p s = %s\n", tmp, tmp);
+	write(STDOUT, "1", 1);
+	ft_return_end(command, index);
 	getcwd(buff, 1024);
 	ft_putstr_fd(buff, STDOUT);
-	ft_putstr_fd("\n", STDOUT);
-	return (1);
+	ft_putstr_fd("\n", STDOUT);	
+	return (NO_ERROR);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exec_command.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: stevenkim <stevenkim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/19 14:54:07 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/20 14:26:15 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/20 15:28:45 by stevenkim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void		ft_route_command(const char *str, int *index)
 		else if (ft_strnstr(str, CD_STR, ft_strlen(CD_STR)))
 			ft_exec_process(ft_test, str, index);
 		else if (ft_strnstr(str, PWD_STR, ft_strlen(PWD_STR)))
-			ft_exec_process(ft_test, str, index);
+			ft_exec_process(ft_handle_pwd, str, index);
 		else if (ft_strnstr(str, EXPORT_STR, ft_strlen(EXPORT_STR)))
 			ft_exec_process(ft_test, str, index);
 		else if (ft_strnstr(str, ENV_STR, ft_strlen(ENV_STR)))
@@ -62,6 +62,6 @@ void			ft_exec_commnad(const char *command)
 
 	index = ft_get_index();
 	ft_route_command(command, &index);
-	if (*(command + ft_get_index()))
+	if (*(command + index))
 		ft_exec_commnad(command);
 }

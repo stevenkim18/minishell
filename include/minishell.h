@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: stevenkim <stevenkim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 16:30:38 by seunkim           #+#    #+#             */
-/*   Updated: 2020/08/20 14:26:21 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/20 15:19:13 by stevenkim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,6 @@ int		ft_verify_command(const char *command);
 void	ft_handle_command(void);
 void	ft_exec_commnad(const char *command);
 
-int		ft_handle_pwd(const char *command);
+int		ft_handle_pwd(const char *command, int *index);
 
 #endif
