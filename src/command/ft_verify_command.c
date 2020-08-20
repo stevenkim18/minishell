@@ -6,48 +6,62 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/19 15:10:50 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/19 17:15:12 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/20 16:37:38 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 
-int			ft_verify_pipe(const char *command)
+int			ft_verify_pipe(const char *command, const int index)
 {
-	char	*pipe_location;
-	int		index;
+	int		i;
 
-	index = 1;
-	if ((pipe_location = ft_strnstr(command, PIPE_STR, ft_strlen((char*)command))))
+	i = index;
+	if (*(command + i) == '|')
 	{
-		while (*(pipe_location + index)
-		&& ft_strnstr(pipe_location + index, SPACE_STR, ft_strlen(SPACE_STR)))
-			++index;
-		if (ft_strnstr(pipe_location + index, SEMICOLON_STR, ft_strlen(SEMICOLON_STR)))
+		if (i == 0)
 		{
-			ft_handle_error(ENOTKN, ENOTKN_S);
+			ft_handle_error(ENOTKN, ENOTKN_P);
 			return (ENOTKN);
+		}
+		else
+		{
+			++i;
+			while (*(command + i) == ' ')
+				++i;
+			if (*(command + i) == ';')
+			{
+				ft_handle_error(ENOTKN, ENOTKN_S);
+				return (ENOTKN);
+			}
 		}
 	}
 	return (NO_ERROR);
 }
 
-int			ft_verify_semicolon(const char *command)
+int			ft_verify_semicolon(const char *command, const int index)
 {
-	char	*semicolon_location;
-	int		index;
+	int			i;
 
-	index = 1;
-	if ((semicolon_location = ft_strnstr(command, SEMICOLON_STR, ft_strlen((char*)command))))
+	i = index;
+	if (*(command + i) == ';')
 	{
-		while (*(semicolon_location + index)
-		&& ft_strnstr(semicolon_location + index, SPACE_STR, ft_strlen(SPACE_STR)))
-			++index;
-		if (ft_strnstr(semicolon_location + index, PIPE_STR, ft_strlen(PIPE_STR)))
+		if (i == 0)
 		{
-			ft_handle_error(ENOTKN, ENOTKN_P);
+			ft_handle_error(ENOTKN, ENOTKN_S);
 			return (ENOTKN);
+		}
+		else
+		{
+			++i;
+			while (*(command + i) == ' ')
+				++i;
+			if (*(command + i) == '|')
+			{
+				ft_handle_error(ENOTKN, ENOTKN_P);
+				return (ENOTKN);
+			}
 		}
 	}
 	return (NO_ERROR);
@@ -60,9 +74,9 @@ int			ft_verify_command(const char *command)
 	index = -1;
 	while (*(command + ++index))
 	{
-		if (ENOTKN == ft_verify_semicolon(command + index))
+		if (ENOTKN == ft_verify_semicolon(command, index))
 			return (ENOTKN);
-		else if ((ENOTKN == ft_verify_pipe(command + index)))
+		else if ((ENOTKN == ft_verify_pipe(command, index)))
 			return (ENOTKN);
 	}
 	return (NO_ERROR);

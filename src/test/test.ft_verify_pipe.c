@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/19 15:41:42 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/19 17:03:14 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/20 16:37:45 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,30 +16,13 @@
 Test(ft_verify_pipe, basic)
 {
 	char *str = NULL;
-	str = "123|;";
-	cr_expect_eq(ft_verify_pipe(str), ENOTKN);
-	cr_expect_eq(ft_handle_error(NO_ERROR, NULL), ENOTKN);
-	str = "123| ;";
-	cr_expect_eq(ft_verify_pipe(str), ENOTKN);
-	cr_expect_eq(ft_handle_error(NO_ERROR, NULL), ENOTKN);
-	str = ";123|;";
-	cr_expect_eq(ft_verify_pipe(str), ENOTKN);
-	cr_expect_eq(ft_handle_error(NO_ERROR, NULL), ENOTKN);
-	str = ";123| ;";
-	cr_expect_eq(ft_verify_pipe(str), ENOTKN);
-	cr_expect_eq(ft_handle_error(NO_ERROR, NULL), ENOTKN);
 	str = "|123";
-	cr_expect_eq(ft_verify_pipe(str), NO_ERROR);
-	str = ";123";
-	cr_expect_eq(ft_verify_pipe(str), NO_ERROR);
-	str = "123";
-	cr_expect_eq(ft_verify_pipe(str), NO_ERROR);
-	str = ";|";
-	cr_expect_eq(ft_verify_pipe(str), NO_ERROR);
-	str = "; |";
-	cr_expect_eq(ft_verify_pipe(str), NO_ERROR);
-	str = "|123|;";
-	cr_expect_eq(ft_verify_pipe(str), NO_ERROR);
-	str = "|123| ;";
-	cr_expect_eq(ft_verify_pipe(str), NO_ERROR);
+	cr_expect_eq(ft_verify_pipe(str, 0), ENOTKN);
+	cr_expect_eq(ft_handle_error(NO_ERROR, NULL), ENOTKN);
+	str = "123|;";
+	cr_expect_eq(ft_verify_pipe(str, 3), ENOTKN);
+	cr_expect_eq(ft_handle_error(NO_ERROR, NULL), ENOTKN);
+	str = "123|  ;";
+	cr_expect_eq(ft_verify_pipe(str, 3), ENOTKN);
+	cr_expect_eq(ft_handle_error(NO_ERROR, NULL), ENOTKN);
 }

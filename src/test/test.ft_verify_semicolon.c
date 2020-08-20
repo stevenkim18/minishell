@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/19 16:12:21 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/19 17:04:15 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/20 16:36:43 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,30 +16,13 @@
 Test(ft_verify_semicolon, basic)
 {
 	char *str = NULL;
+	str = ";123";
+	cr_expect_eq(ft_verify_semicolon(str, 0), ENOTKN);
+	cr_expect_eq(ft_handle_error(NO_ERROR, NULL), ENOTKN);
 	str = "123;|";
-	cr_expect_eq(ft_verify_semicolon(str), ENOTKN);
+	cr_expect_eq(ft_verify_semicolon(str, 3), ENOTKN);
 	cr_expect_eq(ft_handle_error(NO_ERROR, NULL), ENOTKN);
 	str = "123;  |";
-	cr_expect_eq(ft_verify_semicolon(str), ENOTKN);
+	cr_expect_eq(ft_verify_semicolon(str, 3), ENOTKN);
 	cr_expect_eq(ft_handle_error(NO_ERROR, NULL), ENOTKN);
-	str = "|123;|";
-	cr_expect_eq(ft_verify_semicolon(str), ENOTKN);
-	cr_expect_eq(ft_handle_error(NO_ERROR, NULL), ENOTKN);
-	str = "|123;  |";
-	cr_expect_eq(ft_verify_semicolon(str), ENOTKN);
-	cr_expect_eq(ft_handle_error(NO_ERROR, NULL), ENOTKN);
-	str = "|123";
-	cr_expect_eq(ft_verify_semicolon(str), NO_ERROR);
-	str = ";123";
-	cr_expect_eq(ft_verify_semicolon(str), NO_ERROR);
-	str = "123";
-	cr_expect_eq(ft_verify_semicolon(str), NO_ERROR);
-	str = "123|;";
-	cr_expect_eq(ft_verify_semicolon(str), NO_ERROR);
-	str = "123| ;";
-	cr_expect_eq(ft_verify_semicolon(str), NO_ERROR);
-	str = ";123;|";
-	cr_expect_eq(ft_verify_semicolon(str), NO_ERROR);
-	str = ";123;   |";
-	cr_expect_eq(ft_verify_semicolon(str), NO_ERROR);
 }
