@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/19 14:54:07 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/20 14:09:56 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/20 14:22:57 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int			ft_test(const char *str, int *index)
 	return (ENOCMD);
 }
 
-void		ft_exec_command(const char *str, int *index)
+void		ft_route_command(const char *str, int *index)
 {
 	if (str)
 	{
