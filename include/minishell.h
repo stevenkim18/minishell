@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 16:30:38 by seunkim           #+#    #+#             */
-/*   Updated: 2020/08/20 16:30:16 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/20 18:08:41 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,26 @@
 # define STDIN 0
 
 # define ECHO_STR "echo"
+# define ECHO_D "\"echo\""
+# define ECHO_S "\'echo\'"
 # define CD_STR "cd"
+# define CD_D "\"cd\""
+# define CD_S "\'cd\'"
 # define PWD_STR "pwd"
+# define PWD_D "\"pwd\""
+# define PWD_S "\'pwd\'"
 # define EXPORT_STR "export"
+# define EXPORT_D "\"export\""
+# define EXPORT_S "\'export\'"
 # define ENV_STR "env"
+# define ENV_D "\"env\""
+# define ENV_S "\'env\'"
 # define UNSET_STR "unset"
+# define UNSET_D "\"unset\""
+# define UNSET_S "\'unset\'"
 # define EXIT_STR "exit"
+# define EXIT_D "\"exit\""
+# define EXIT_S "\'exit\'"
 
 # define SHELL_STR_L "MINISHELL >> "
 # define SHELL_STR_S "minishell: "
@@ -96,6 +110,9 @@ int		ft_verify_command(const char *command);
 
 void	ft_handle_command(void);
 void	ft_exec_commnad(const char *command);
+void	ft_trim_command(const char *str, int *index, char *command);
+int		ft_get_str_location(const char *str, int *index);
+void	ft_route_command(const char *str, int *index);
 
 int		ft_handle_pwd(const char *command, int *index);
 
