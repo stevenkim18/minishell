@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/19 14:54:07 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/19 14:54:22 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/20 14:26:15 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,12 @@ int			ft_test(const char *str, int *index)
 			write(STDOUT, (str + *index), 1);
 			++(*index);
 		}
+		ft_putstr_fd(NEWLINE_STR, STDOUT);
 	}
 	return (ENOCMD);
 }
 
-void		ft_exec_command(const char *str, int *index)
+static void		ft_route_command(const char *str, int *index)
 {
 	if (str)
 	{
@@ -45,10 +46,22 @@ void		ft_exec_command(const char *str, int *index)
 		else if (ft_strnstr(str, UNSET_STR, ft_strlen(UNSET_STR)))
 			ft_exec_process(ft_test, str, index);
 		else if (ft_strnstr(str, EXIT_STR, ft_strlen(EXIT_STR)))
-			ft_exec_process(ft_test, str, index);
+		{
+			exit(0);
+		}
 		else
 			ft_exec_process(ft_test, str, index);
 	}
 	else
 		ft_handle_error(ENOMEM, NULL);
+}
+
+void			ft_exec_commnad(const char *command)
+{
+	int			index;
+
+	index = ft_get_index();
+	ft_route_command(command, &index);
+	if (*(command + ft_get_index()))
+		ft_exec_commnad(command);
 }

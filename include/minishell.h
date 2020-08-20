@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 16:30:38 by seunkim           #+#    #+#             */
-/*   Updated: 2020/08/19 17:16:49 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/20 14:26:21 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,10 @@
 # define SEMICOLON_STR ";"
 # define PIPE_STR "|"
 
+# define IGNORE_INT "\b\b  \b\b"
+
 # define NO_ERROR 0
+# define ENOINT_P 1
 # define ENOCMD 127
 # define ENOINT 130
 # define ENOTKN 258
@@ -92,7 +95,8 @@ int		ft_verify_semicolon(const char *command);
 int		ft_verify_command(const char *command);
 
 void	ft_handle_command(void);
-void	ft_exec_command(const char *str, int *index);
+void	ft_exec_commnad(const char *command);
+
 int		ft_handle_pwd(const char *command);
 
 #endif
