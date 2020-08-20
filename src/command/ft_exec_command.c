@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exec_command.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stevenkim <stevenkim@student.42.fr>        +#+  +:+       +#+        */
+/*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/19 14:54:07 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/20 15:28:45 by stevenkim        ###   ########.fr       */
+/*   Updated: 2020/08/20 15:39:48 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,6 @@ void			ft_exec_commnad(const char *command)
 
 	index = ft_get_index();
 	ft_route_command(command, &index);
-	if (*(command + index))
-		ft_exec_commnad(command);
+	if (*(command + ft_get_index()))
+		ft_exec_commnad(command + ft_get_index());
 }
