@@ -6,12 +6,11 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/19 15:10:50 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/20 16:37:38 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/20 17:47:22 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
 
 int			ft_verify_pipe(const char *command, const int index)
 {
