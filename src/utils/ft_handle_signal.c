@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/16 15:11:17 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/20 14:01:37 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/20 14:10:19 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void			ft_register_parent_signal(void)
 {
 	signal(SIGINT, ft_handle_parent_signal);
 	signal(SIGCHLD, ft_handle_parent_signal);
+	signal(SIGQUIT, ft_handle_parent_signal);
 }
 
 void			ft_register_child_signal(void)
