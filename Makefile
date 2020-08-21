@@ -14,7 +14,7 @@ UTIL = ft_handle_error.c ft_handle_pipe_one.c ft_handle_pipe_two.c ft_handle_pro
 UTIL_DIR = ./src/utils/
 UTILS = $(addprefix $(UTIL_DIR), $(UTIL))
 
-COMMAND = ft_handle_command.c ft_exec_command.c ft_handle_pwd.c ft_verify_command.c ft_route_command.c
+COMMAND = ft_handle_command.c ft_exec_command.c ft_handle_pwd.c ft_verify_command.c ft_route_command.c ft_handle_other.c
 COMMAND_DIR = ./src/command/
 COMMANDS = $(addprefix $(COMMAND_DIR), $(COMMAND))
 
@@ -22,7 +22,7 @@ LIB_H = -I ./src/libft
 LIB = libft.a
 
 TEST_NAME = test.out
-TEST = test.ft_trim_str.c test.ft_handle_pipe.c test.ft_handle_error.c test.ft_get_char.c test.ft_verify_pipe.c test.ft_verify_semicolon.c test.ft_verify_command.c
+TEST = test.ft_trim_str.c test.ft_handle_pipe.c test.ft_handle_error.c test.ft_get_char.c test.ft_verify_pipe.c test.ft_verify_semicolon.c test.ft_verify_command.c test.ft_get_command.c test.ft_check_home_dir.c
 TEST_DIR = ./src/test/
 TESTS = $(addprefix $(TEST_DIR), $(TEST))
 TEST_H = -I ~/.brew/include

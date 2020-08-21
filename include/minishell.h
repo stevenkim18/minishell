@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 16:30:38 by seunkim           #+#    #+#             */
-/*   Updated: 2020/08/20 18:08:41 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/2 by6:23:09im            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@
 # include <errno.h>
 # include <string.h>
 # include <stdbool.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+
 
 # define STDOUT 1
 # define STDIN 0
@@ -115,5 +118,7 @@ int		ft_get_str_location(const char *str, int *index);
 void	ft_route_command(const char *str, int *index);
 
 int		ft_handle_pwd(const char *command, int *index);
+
+void	ft_get_command(const char *str, char *command);
 
 #endif

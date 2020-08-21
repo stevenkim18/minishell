@@ -6,14 +6,12 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/19 16:29:53 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/20 16:38:03 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/21 16:10:05 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include <criterion/criterion.h>
-
-
 
 Test(ft_verify_command, basic)
 {
