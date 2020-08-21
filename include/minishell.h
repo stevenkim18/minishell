@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/10 16:30:38 by seunkim           #+#    #+#             */
-/*   Updated: 2020/08/2 by6:23:09im            ###   ########.fr       */
+/*   Created: 2020/08/21 18:03:04 by dakim             #+#    #+#             */
+/*   Updated: 2020/08/21 18:03:21 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@
 # include <stdbool.h>
 # include <sys/types.h>
 # include <sys/stat.h>
-
 
 # define STDOUT 1
 # define STDIN 0
@@ -75,50 +74,50 @@
 # define ENOTKN_S "`;\'"
 # define ENOTKN_P "`|\'"
 
-int		get_next_line(int fd, char **line);
-char	*ft_trim_str(const char *str);
+int			get_next_line(int fd, char **line);
+char		*ft_trim_str(const char *str);
 
 # define READ 0
 # define WRITE 1
 
-void	ft_end_process(const int error, int index, const pid_t pid);
-void	ft_start_process(pid_t *pid);
-void	ft_exec_process(int (*ft_exec_command)(const char *, int *),
+void		ft_end_process(const int error, int index, const pid_t pid);
+void		ft_start_process(pid_t *pid);
+void		ft_exec_process(int (*ft_exec_command)(const char *, int *),
 								const char *command, int *index);
 
-void	ft_put_error(const int error_num);
-int		ft_handle_error(const int error_num, void *content);
+void		ft_put_error(const int error_num);
+int			ft_handle_error(const int error_num, void *content);
 
-void	ft_open_pipe(int fd[2]);
-void	ft_close_pipe(int fd[2]);
-void	ft_send_int(const int signal, int fd[2]);
-int		ft_get_int(int fd[2]);
-void	ft_send_str(char *str, int fd[2]);
-char	*ft_get_str(int fd[2]);
+void		ft_open_pipe(int fd[2]);
+void		ft_close_pipe(int fd[2]);
+void		ft_send_int(const int signal, int fd[2]);
+int			ft_get_int(int fd[2]);
+void		ft_send_str(char *str, int fd[2]);
+char		*ft_get_str(int fd[2]);
 
-int		*ft_get_data_pipe(void);
-int		*ft_get_error_pipe(void);
-int		*ft_get_index_pipe(void);
-int		ft_get_index(void);
-void	ft_set_index(int index);
+int			*ft_get_data_pipe(void);
+int			*ft_get_error_pipe(void);
+int			*ft_get_index_pipe(void);
+int			ft_get_index(void);
+void		ft_set_index(int index);
 
-void	ft_handle_parent_signal(int signal);
-void	ft_handle_child_signal(int signal);
-void	ft_register_parent_signal(void);
-void	ft_register_child_signal(void);
+void		ft_handle_parent_signal(int signal);
+void		ft_handle_child_signal(int signal);
+void		ft_register_parent_signal(void);
+void		ft_register_child_signal(void);
 
-int		ft_verify_pipe(const char *command, const int index);
-int		ft_verify_semicolon(const char *command, const int index);
-int		ft_verify_command(const char *command);
+int			ft_verify_pipe(const char *command, const int index);
+int			ft_verify_semicolon(const char *command, const int index);
+int			ft_verify_command(const char *command);
 
-void	ft_handle_command(void);
-void	ft_exec_commnad(const char *command);
-void	ft_trim_command(const char *str, int *index, char *command);
-int		ft_get_str_location(const char *str, int *index);
-void	ft_route_command(const char *str, int *index);
+void		ft_handle_command(void);
+void		ft_exec_commnad(const char *command);
+void		ft_trim_command(const char *str, int *index, char *command);
+int			ft_get_str_location(const char *str, int *index);
+void		ft_route_command(const char *str, int *index);
 
-int		ft_handle_pwd(const char *command, int *index);
+int			ft_handle_pwd(const char *command, int *index);
 
-void	ft_get_command(const char *str, char *command);
+void		ft_get_command(const char *str, char *command);
 
 #endif
