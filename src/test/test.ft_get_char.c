@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/19 15:32:52 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/19 15:37:30 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/21 16:10:32 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,4 +19,3 @@ Test(ft_get_char, basic)
 	cr_expect_str_eq(ft_strnstr(str, ";", ft_strlen(str)), ";123123|");
 	cr_expect_str_eq(ft_strnstr(str, "|", ft_strlen(str)), "|");
 }
-

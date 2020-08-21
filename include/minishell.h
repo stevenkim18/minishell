@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stevenkim <stevenkim@student.42.fr>        +#+  +:+       +#+        */
+/*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 16:30:38 by seunkim           #+#    #+#             */
-/*   Updated: 2020/08/20 15:19:13 by stevenkim        ###   ########.fr       */
+/*   Updated: 2020/08/2 by6:23:09im            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,34 @@
 # include <errno.h>
 # include <string.h>
 # include <stdbool.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+
 
 # define STDOUT 1
 # define STDIN 0
 
 # define ECHO_STR "echo"
+# define ECHO_D "\"echo\""
+# define ECHO_S "\'echo\'"
 # define CD_STR "cd"
+# define CD_D "\"cd\""
+# define CD_S "\'cd\'"
 # define PWD_STR "pwd"
+# define PWD_D "\"pwd\""
+# define PWD_S "\'pwd\'"
 # define EXPORT_STR "export"
+# define EXPORT_D "\"export\""
+# define EXPORT_S "\'export\'"
 # define ENV_STR "env"
+# define ENV_D "\"env\""
+# define ENV_S "\'env\'"
 # define UNSET_STR "unset"
+# define UNSET_D "\"unset\""
+# define UNSET_S "\'unset\'"
 # define EXIT_STR "exit"
+# define EXIT_D "\"exit\""
+# define EXIT_S "\'exit\'"
 
 # define SHELL_STR_L "MINISHELL >> "
 # define SHELL_STR_S "minishell: "
@@ -90,13 +107,18 @@ void	ft_handle_child_signal(int signal);
 void	ft_register_parent_signal(void);
 void	ft_register_child_signal(void);
 
-int		ft_verify_pipe(const char *command);
-int		ft_verify_semicolon(const char *command);
+int		ft_verify_pipe(const char *command, const int index);
+int		ft_verify_semicolon(const char *command, const int index);
 int		ft_verify_command(const char *command);
 
 void	ft_handle_command(void);
 void	ft_exec_commnad(const char *command);
+void	ft_trim_command(const char *str, int *index, char *command);
+int		ft_get_str_location(const char *str, int *index);
+void	ft_route_command(const char *str, int *index);
 
 int		ft_handle_pwd(const char *command, int *index);
+
+void	ft_get_command(const char *str, char *command);
 
 #endif

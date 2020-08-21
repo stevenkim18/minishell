@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_handle_pwd.c                                    :+:      :+:    :+:   */
+/*   test.ft_check_home_dir.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/17 18:23:46 by seunkim           #+#    #+#             */
-/*   Updated: 2020/08/21 17:57:15 by dakim            ###   ########.fr       */
+/*   Created: 2020/08/21 17:30:03 by dakim             #+#    #+#             */
+/*   Updated: 2020/08/21 17:32:06 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include <criterion/criterion.h>
 
-void	ft_return_end(const char *command, int *index)
+Test(ft_check_home_dir, basic)
 {
-	++(*index);
-	while (command[*index] && command[*index] != ';' && command[*index] != '|')
-		(*index)++;
-}
-
-int		ft_handle_pwd(const char *command, int *index)
-{
-	char	buff[1024];
-
-	ft_return_end(command, index);
-	getcwd(buff, 1024);
-	ft_putstr_fd(buff, STDOUT);
-	ft_putstr_fd(NEWLINE_STR, STDOUT);
-	return (NO_ERROR);
+	char command[1024];
+	char *str = NULL;
+	str = "~/bin/ls";
+	ft_check_home_dir(str, command);
+	cr_expect_str_eq(command, "/Users/dakim/bin/ls");
+	str = "~bin/ls";
+	ft_check_home_dir(str, command);
+	cr_expect_str_eq(command, "bin/ls");
 }
