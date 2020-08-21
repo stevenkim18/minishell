@@ -6,20 +6,20 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/17 18:23:46 by seunkim           #+#    #+#             */
-/*   Updated: 2020/08/20 16:12:38 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/21 17:57:15 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void    ft_return_end(const char *command, int *index)
+void	ft_return_end(const char *command, int *index)
 {
 	++(*index);
 	while (command[*index] && command[*index] != ';' && command[*index] != '|')
 		(*index)++;
 }
 
-int     ft_handle_pwd(const char *command, int *index)
+int		ft_handle_pwd(const char *command, int *index)
 {
 	char	buff[1024];
 
