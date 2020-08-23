@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/21 16:01:01 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/23 14:19:00 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/23 14:41:32 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,79 +96,15 @@ void		ft_check_home_dir(char *command)
 	}
 }
 
-
-
-int		main()
+int			ft_check_command(char *command)
 {
-	char *command = NULL;
-	struct stat buf;
-
-	// 1. 디렉토리
-	command = "/bin";
-	if (!stat(command, &buf))
-		printf("1 directory = %d\n", S_ISDIR(buf.st_mode));
-	else
-		printf("1. %s\n", strerror(errno));
-
-	command = "./include";
-	if (!stat(command, &buf))
-		printf("2 directory = %d\n", S_ISDIR(buf.st_mode));
-	else
-		printf("2. %s\n", strerror(errno));
-
-	command = "/Users/dakim/Documents";
-	if (!stat(command, &buf))
-		printf("3 ~ directory = %d\n", S_ISDIR(buf.st_mode));
-	else
-		printf("3. %s\n", strerror(errno));
-	command = "~/Documents";
-	// ft_check_home_dir(command);
-	if (!stat(command, &buf))
-		printf("3 ~ directory = %d\n", S_ISDIR(buf.st_mode));
-	else
-		printf("3. %s\n", strerror(errno));
-	command = "../ft_services";
-	if (!stat(command, &buf))
-		printf("3 ~ directory = %d\n", S_ISDIR(buf.st_mode));
-	else
-		printf("3. %s\n", strerror(errno));
-	command = "../ft_services/";
-	if (!stat(command, &buf))
-		printf("3 ~ directory = %d\n", S_ISDIR(buf.st_mode));
-	else
-		printf("3. %s\n", strerror(errno));
-	// 2. 파일
-	command = "/Users/dakim/Documents/42/cursus/c1/get_next_line/get_next_line.h";
-	if (!stat(command, &buf))
-		printf("4. file = %d\n", S_ISREG(buf.st_mode));
-	else
-		printf("4. %s\n", strerror(errno));
-	// 3. 프로그램
-	command = "/bin/ls";
-	if (!stat(command, &buf))
-		printf("5. program = %d\n", S_ISREG(buf.st_mode));
-	else
-		printf("5. %s\n", strerror(errno));
-	command = "./minishell";
-	if (!stat(command, &buf))
-		printf("5. program = %d\n", S_ISREG(buf.st_mode));
-	else
-		printf("5. %s\n", strerror(errno));
-	// 4. 링크
-	command = "ls";
-	if (!lstat(command, &buf))
-		printf("6. link = %d\n", S_ISDIR(buf.st_mode));
-	else
-		printf("6. %s\n", strerror(errno));
-	// 5. 존재하지 않음
-	command = "afakjfslkfjaoifjawiofjwoifjwi";
-	if (!stat(command,&buf))
-		printf("7. not = %d\n", S_ISDIR(buf.st_mode));
-	else
+	struct stat		command_info;
+	if (!stat(command, &command_info))
 	{
-		printf("7. %s\n", strerror(errno));
-		// printf("%d\n", errno);
-		// printf("%s\n", command);
-		// ft_handle_error(errno, command);
+		if (S_ISREG(command_info.st_mode))
+			return (FILE);
+		else if (S_ISDIR(command_info.st_mode))
+			return (DIR);
 	}
+	return (ERROR);
 }
