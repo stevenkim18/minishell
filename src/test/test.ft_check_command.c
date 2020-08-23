@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 14:26:18 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/23 14:32:29 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/23 15:01:03 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,3 @@ Test(ft_check_command, basic)
 	str = "ls";
 	cr_expect_eq(ft_check_command(str), 0);
 }
-
-
