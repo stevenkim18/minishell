@@ -1,4 +1,5 @@
 *.o
+.DS_Store
 minishell
 a.out
 test.out

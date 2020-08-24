@@ -1,40 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.ft_check_home_dir.c                           :+:      :+:    :+:   */
+/*   test.ft_get_env.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/21 17:30:03 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/23 13:51:46 by dakim            ###   ########.fr       */
+/*   Created: 2020/08/21 17:59:22 by dakim             #+#    #+#             */
+/*   Updated: 2020/08/21 18:21:04 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include <criterion/criterion.h>
 
-Test(ft_check_home_dir, basic)
+Test(ft_get_env, basic)
 {
-	char str[1024];
-	str[0] = '~';
-	str[1] = '/';
-	str[2] = 'b';
-	str[3] = 'i';
-	str[4] = 'n';
-	str[5] = '/';
-	str[6] = 'l';
-	str[7] = 's';
-	str[8] = 0;
-	ft_check_home_dir(str);
-	cr_expect_str_eq(str, "/Users/dakim/bin/ls");
-	str[0] = '~';
-	str[1] = 'b';
-	str[2] = 'i';
-	str[3] = 'n';
-	str[4] = '/';
-	str[5] = 'l';
-	str[6] = 's';
-	str[7] = 0;
-	ft_check_home_dir(str);
-	cr_expect_str_eq(str, "bin/ls");
+	char command[1024];
+	ft_get_env("HOME", command);
+	cr_expect_str_eq(command, "/Users/dakim");
 }
+
