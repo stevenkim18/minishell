@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: stevenkim <stevenkim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/21 18:03:04 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/23 14:40:13 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/24 15:42:20 by stevenkim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,8 @@ int			ft_get_str_location(const char *str, int *index);
 void		ft_route_command(const char *str, int *index);
 
 int			ft_handle_pwd(const char *command, int *index);
+void		ft_return_end(const char *command, int *index);
+int			ft_handle_cd(const char *command, int *index);
 
 void		ft_get_env(const char *key, char *value);
 
