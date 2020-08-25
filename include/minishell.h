@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/21 18:03:04 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/23 14:40:13 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/25 14:43:51 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,11 +122,5 @@ void		ft_get_env(const char *key, char *value);
 
 void		ft_get_command(const char *str, char *command);
 void		ft_check_home_dir(char *command);
-
-# define DIR 1
-# define FILE 2
-# define ERROR 0
-
-int			ft_check_command(char *command);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/21 16:01:01 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/23 14:45:49 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/25 14:44:05 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,18 +94,4 @@ void		ft_check_home_dir(char *command)
 		else
 			ft_remove_home_dir(command);
 	}
-}
-
-int			ft_check_command(char *command)
-{
-	struct stat		command_info;
-
-	if (!stat(command, &command_info))
-	{
-		if (S_ISREG(command_info.st_mode))
-			return (FILE);
-		else if (S_ISDIR(command_info.st_mode))
-			return (DIR);
-	}
-	return (ERROR);
 }
