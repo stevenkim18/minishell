@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_handle_process.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: stevenkim <stevenkim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/15 15:48:21 by dakim             #+#    #+#             */
 /*   Updated: 2020/08/25 16:41:26 by dakim            ###   ########.fr       */

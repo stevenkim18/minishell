@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_route_command.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: stevenkim <stevenkim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/20 18:05:05 by dakim             #+#    #+#             */
 /*   Updated: 2020/08/25 15:19:14 by dakim            ###   ########.fr       */
@@ -45,7 +45,7 @@ int			ft_check_echo_cd(const char *str, int *index, int i)
 	|| ft_strnstr(str + i, CD_S, ft_strlen(CD_S)))
 	{
 		ft_trim_command(str, index, CD_STR);
-		ft_exec_process(ft_test, str, index);
+		ft_handle_cd(str, index);
 		return (0);
 	}
 	return (1);
