@@ -6,17 +6,11 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/21 16:01:01 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/25 14:44:05 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/25 16:15:32 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-/*
-** 1. get command
-** 2. check command kind
-** 3. execute command
-*/
 
 void		ft_get_command(const char *str, char *command)
 {
@@ -91,7 +85,7 @@ void		ft_check_home_dir(char *command)
 	{
 		if (*(command + 1) == '/')
 			ft_add_home_dir(command);
-		else
+		else if (*(command + 1) != '.')
 			ft_remove_home_dir(command);
 	}
 }
