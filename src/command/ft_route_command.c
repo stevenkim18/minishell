@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/20 18:05:05 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/25 18:07:17 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/26 08:34:33 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int			ft_check_echo_cd(const char *str, int *index, int i)
 		*index = i;
 		ft_trim_command(str, index, CD_STR);
 		ft_exec_process(ft_test, str, index);
+		// ft_handle_cd(str, index);
 		return (0);
 	}
 	return (1);
@@ -120,7 +121,7 @@ void		ft_route_command(const char *str, int *index)
 		else if (!ft_check_pwd_exit_unset(str, index, i))
 			return ;
 		else
-			ft_exec_process(ft_test, str, index);
+			ft_exec_process(ft_handle_built_in, str, index);
 	}
 	else
 		ft_handle_error(ENOMEM, NULL);
