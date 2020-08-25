@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/21 18:03:04 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/25 16:05:48 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/25 16:31:20 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,16 @@
 # define NO_ERROR 0
 # define ENOINT_P 1
 # define ENOCMD 127
+# define ENODIR -127
 # define ENOINT 130
 # define ENOTKN 258
+# define ENOTKN_P 258
+# define ENOTKN_S -258
 
-# define ENOCMD_STR "command not found: "
-# define ENOTKN_STR "syntax error near unexpected token "
-# define ENOTKN_S "`;\'"
-# define ENOTKN_P "`|\'"
+# define ENOCMD_STR ": command not found"
+# define ENODIR_STR ": No such file or directory"
+# define ENOTKN_S_STR "syntax error near unexpected token `;\'"
+# define ENOTKN_P_STR "syntax error near unexpected token `|\'"
 
 int			get_next_line(int fd, char **line);
 char		*ft_trim_str(const char *str);

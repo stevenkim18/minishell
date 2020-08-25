@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/15 16:33:17 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/19 16:09:19 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/25 16:30:07 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,11 @@ static bool		ft_chcek_custom_error(const int error_num)
 {
 	if (error_num == ENOCMD)
 		return (true);
-	else if (error_num == ENOTKN)
+	else if (error_num == ENODIR)
+		return (true);
+	else if (error_num == ENOTKN_P)
+		return (true);
+	else if (error_num == ENOTKN_S)
 		return (true);
 	return (false);
 }
@@ -34,8 +38,12 @@ static void		ft_print_custom_error(const int error_num)
 {
 	if (error_num == ENOCMD)
 		ft_putstr_fd(ENOCMD_STR, STDOUT);
-	else if (error_num == ENOTKN)
-		ft_putstr_fd(ENOTKN_STR, STDOUT);
+	else if (error_num == ENODIR)
+		ft_putstr_fd(ENODIR_STR, STDOUT);
+	else if (error_num == ENOTKN_P)
+		ft_putstr_fd(ENOTKN_P_STR, STDOUT);
+	else if (error_num == ENOTKN_S)
+		ft_putstr_fd(ENOTKN_S_STR, STDOUT);
 }
 
 void			ft_put_error(const int error_num)
@@ -50,12 +58,12 @@ int				ft_handle_error(const int error_num, void *content)
 	if (ft_check_error(error_num))
 	{
 		ft_putstr_fd(SHELL_STR_S, STDOUT);
-		if (ft_chcek_custom_error(error_num))
+		if (content)
 		{
-			ft_print_custom_error(error_num);
-			if (content)
-				ft_putstr_fd(content, STDOUT);
+			ft_putstr_fd(content, STDOUT);
 		}
+		if (ft_chcek_custom_error(error_num))
+			ft_print_custom_error(error_num);
 		else
 			ft_putstr_fd(strerror(error_num), STDOUT);
 		ft_putstr_fd(NEWLINE_STR, STDOUT);
