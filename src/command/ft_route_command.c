@@ -6,7 +6,7 @@
 /*   By: stevenkim <stevenkim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/20 18:05:05 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/24 16:18:07 by stevenkim        ###   ########.fr       */
+/*   Updated: 2020/08/25 15:19:14 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ void		ft_route_command(const char *str, int *index)
 		else if (!ft_check_pwd_exit_unset(str, index, i))
 			return ;
 		else
-			ft_exec_process(ft_test, str, index);
+			ft_exec_process(ft_handle_built_in, str, index);
 	}
 	else
 		ft_handle_error(ENOMEM, NULL);

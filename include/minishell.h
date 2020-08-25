@@ -6,7 +6,7 @@
 /*   By: stevenkim <stevenkim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/21 18:03:04 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/24 15:42:20 by stevenkim        ###   ########.fr       */
+/*   Updated: 2020/08/25 16:31:20 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # include <stdbool.h>
 # include <sys/types.h>
 # include <sys/stat.h>
+# include <dirent.h>
 
 # define STDOUT 1
 # define STDIN 0
@@ -66,13 +67,16 @@
 # define NO_ERROR 0
 # define ENOINT_P 1
 # define ENOCMD 127
+# define ENODIR -127
 # define ENOINT 130
 # define ENOTKN 258
+# define ENOTKN_P 258
+# define ENOTKN_S -258
 
-# define ENOCMD_STR "command not found: "
-# define ENOTKN_STR "syntax error near unexpected token "
-# define ENOTKN_S "`;\'"
-# define ENOTKN_P "`|\'"
+# define ENOCMD_STR ": command not found"
+# define ENODIR_STR ": No such file or directory"
+# define ENOTKN_S_STR "syntax error near unexpected token `;\'"
+# define ENOTKN_P_STR "syntax error near unexpected token `|\'"
 
 int			get_next_line(int fd, char **line);
 char		*ft_trim_str(const char *str);
@@ -121,14 +125,16 @@ void		ft_return_end(const char *command, int *index);
 int			ft_handle_cd(const char *command, int *index);
 
 void		ft_get_env(const char *key, char *value);
-
+int			ft_check_dir(const char *str);
 void		ft_get_command(const char *str, char *command);
 void		ft_check_home_dir(char *command);
 
-# define DIR 1
-# define FILE 2
-# define ERROR 0
+void		ft_return_end(const char *command, int *index);
 
-int			ft_check_command(char *command);
+int			ft_handle_pwd(const char *command, int *index);
+
+# define BIN "/bin/"
+# define USR_BIN "/usr/bin"
+int			ft_handle_built_in(const char *command, int *index);
 
 #endif
