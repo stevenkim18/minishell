@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/21 18:03:04 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/26 17:52:30 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/26 18:31:31 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@
 # define PIPE_STR "|"
 
 # define IGNORE_INT "\b\b  \b\b"
+
+# define EMPTY_STR ""
 
 # define NO_ERROR 0
 # define ENOINT_P 1

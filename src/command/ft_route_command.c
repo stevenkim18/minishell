@@ -6,11 +6,12 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/20 18:05:05 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/26 18:21:37 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/26 18:31:47 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
 int			ft_test(const char *str, int *index)
 {
 	if (*str)
@@ -50,7 +51,7 @@ int			ft_check_echo_cd(const char *str, int *index, int i)
 			|| *(str + *index) == '|')
 				++(*index);
 			ft_return_end(str, index);
-			ft_send_str("", ft_get_data_pipe());
+			ft_send_str(EMPTY_STR, ft_get_data_pipe());
 		}
 		else
 		{
