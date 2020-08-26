@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/19 13:29:08 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/19 14:55:26 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/26 17:56:12 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,16 @@ char			*ft_get_str(int fd[2])
 		ft_end_process(ENOMEM, 0, ft_get_index());
 	}
 	return (return_str);
+}
+
+void			ft_flush_pipe(const char *str)
+{
+	char		*tmp_str;
+
+	if (*str == '|')
+	{
+		tmp_str = ft_get_str(ft_get_data_pipe());
+		printf("f = %s\n", tmp_str);
+		free(tmp_str);
+	}
 }

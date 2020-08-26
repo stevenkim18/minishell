@@ -10,7 +10,7 @@ SRC = main.c
 SRC_DIR = ./src/
 SRCS = $(addprefix $(SRC_DIR), $(SRC))
 
-UTIL = ft_handle_error.c ft_handle_pipe_one.c ft_handle_pipe_two.c ft_handle_process.c ft_handle_signal.c ft_handle_index.c ft_handle_fd.c ft_handle_env.c ft_check_dir.c ft_check_home_dir.c ft_get_command.c ft_check_fork.c ft_check_last_command.c ft_flush_pipe.c ft_return_end.c ft_suppress_command.c
+UTIL = ft_handle_error.c ft_handle_pipe_one.c ft_handle_pipe_two.c ft_handle_process.c ft_handle_signal.c ft_handle_index.c ft_handle_fd.c ft_handle_env.c ft_check_dir.c ft_check_home_dir.c ft_get_command.c ft_check_fork.c ft_check_last_command.c ft_return_end.c ft_suppress_command.c
 UTIL_DIR = ./src/utils/
 UTILS = $(addprefix $(UTIL_DIR), $(UTIL))
 
