@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/17 18:23:46 by seunkim           #+#    #+#             */
-/*   Updated: 2020/08/26 16:42:41 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/26 17:36:15 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void	ft_return_end(const char *command, int *index)
 {
-	if (command[*index])
-		(*index)++;
 	while (command[*index] && command[*index] != ';' && command[*index] != '|')
 		(*index)++;
 }
