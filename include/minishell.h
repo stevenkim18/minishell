@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/21 18:03:04 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/26 13:09:29 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/26 13:12:35 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,10 +124,6 @@ void		ft_trim_command(const char *str, int *index, char *command);
 int			ft_get_str_location(const char *str, int *index);
 void		ft_route_command(const char *str, int *index);
 
-int			ft_handle_pwd(const char *command, int *index);
-void		ft_return_end(const char *command, int *index);
-int			ft_handle_cd(const char *command, int *index);
-
 void		ft_get_env(const char *key, char *value);
 void		ft_set_env(const char *key, char *value);
 void		ft_delete_env(const char *key);
@@ -137,10 +133,9 @@ int			ft_check_dir(const char *str);
 void		ft_get_command(const char *str, char *command);
 void		ft_check_home_dir(char *command);
 
-void		ft_return_end(const char *command, int *index);
-
 int			ft_handle_pwd(const char *command, int *index);
-
+void		ft_return_end(const char *command, int *index);
+int			ft_handle_cd(const char *command, int *index);
 # define BIN "/bin/"
 # define USR_BIN "/usr/bin/"
 int			ft_handle_built_in(const char *command, int *index);
