@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/20 18:05:05 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/26 17:52:40 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/26 18:21:37 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int			ft_check_echo_cd(const char *str, int *index, int i)
 		// TODO *(str + *index) == '|'인경우 파이프에서 데이터 빼내기
 		*index = i;
 		ft_trim_command(str, index, ECHO_STR);
+		if (ft_suppress_command(str + *index))
 		ft_exec_process(ft_test, str, index);
 		return (0);
 	}
@@ -43,11 +44,21 @@ int			ft_check_echo_cd(const char *str, int *index, int i)
 	|| ft_strnstr(str + i, CD_S, ft_strlen(CD_S)))
 	{
 		ft_flush_pipe(str + *index);
-		*index = i;
-		ft_trim_command(str, index, CD_STR);
-		ft_handle_cd(str, index);
+		if (ft_suppress_command(str + *index))
+		{
+			if (*(str + *index) == ';'
+			|| *(str + *index) == '|')
+				++(*index);
+			ft_return_end(str, index);
+			ft_send_str("", ft_get_data_pipe());
+		}
+		else
+		{
+			*index = i;
+			ft_trim_command(str, index, CD_STR);
+			ft_handle_cd(str, index);
+		}
 		ft_set_index(*index);
-		// TODO | cd ../ or cd ../ | 작동하지 않음
 		return (0);
 	}
 	return (1);
