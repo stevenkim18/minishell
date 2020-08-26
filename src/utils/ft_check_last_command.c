@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_handle_pwd.c                                    :+:      :+:    :+:   */
+/*   ft_check_last_command.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/17 18:23:46 by seunkim           #+#    #+#             */
-/*   Updated: 2020/08/26 17:39:02 by dakim            ###   ########.fr       */
+/*   Created: 2020/08/26 17:16:41 by dakim             #+#    #+#             */
+/*   Updated: 2020/08/26 17:53:16 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int		ft_handle_pwd(const char *command, int *index)
+int			ft_check_last_command(const char *command)
 {
-	char	buff[1024];
-
-	getcwd(buff, 1024);
-	if (*(command + *index) == '|')
-		ft_send_str(buff, ft_get_data_pipe());
-	else
-	{
-		ft_putstr_fd(buff, STDOUT);
-		ft_putstr_fd(NEWLINE_STR, STDOUT);
-	}
-	ft_return_end(command, index);
-	return (NO_ERROR);
+	if (*command == '|' && *(command + 1) == 0)
+		return (-1);
+	else if (*command == ';' && *(command + 1) == 0)
+		return (-1);
+	else if (*command == 0)
+		return (-1);
+	return (0);
 }

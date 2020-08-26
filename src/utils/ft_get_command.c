@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 17:24:01 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/26 09:26:53 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/26 16:54:52 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ void		ft_get_command(const char *str, char *command)
 	}
 	else
 	{
-		while (*(str + i) && (*(str + i) != '\'' && *(str + i) != '\"' && *(str + i) != ' '))
+		while (*(str + i) && (*(str + i) != '\''
+		&& *(str + i) != '\"' && *(str + i) != ' '))
 			command[j++] = *(str + i++);
 	}
 	command[j] = 0;

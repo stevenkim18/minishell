@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/21 18:03:04 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/26 12:03:17 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/26 18:31:31 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,14 @@
 
 # define IGNORE_INT "\b\b  \b\b"
 
+# define EMPTY_STR ""
+
 # define NO_ERROR 0
 # define ENOINT_P 1
 # define ENOCMD 127
 # define ENODIR -127
 # define ENOINT 130
+# define ENOQUIT 1
 # define ENOTKN 258
 # define ENOTKN_P 258
 # define ENOTKN_S -258
@@ -84,10 +87,13 @@ char		*ft_trim_str(const char *str);
 # define READ 0
 # define WRITE 1
 
+pid_t		ft_get_pid(void);
 void		ft_end_process(const int error, int index, const pid_t pid);
 void		ft_start_process(pid_t *pid);
 void		ft_exec_process(int (*ft_exec_command)(const char *, int *),
 								const char *command, int *index);
+bool		ft_get_fork_status(void);
+void		ft_set_fork_status(bool status);
 
 void		ft_put_error(const int error_num);
 int			ft_handle_error(const int error_num, void *content);
@@ -102,12 +108,15 @@ char		*ft_get_str(int fd[2]);
 int			*ft_get_data_pipe(void);
 int			*ft_get_error_pipe(void);
 int			*ft_get_index_pipe(void);
+
 int			ft_get_index(void);
 void		ft_set_index(int index);
+int			ft_get_last_index(void);
+void		ft_set_last_index(int index);
 
 void		ft_handle_parent_signal(int signal);
+void		ft_ignore_parent_signal(void);
 void		ft_handle_child_signal(int signal);
-void		ft_register_parent_signal(void);
 void		ft_register_child_signal(void);
 
 int			ft_verify_pipe(const char *command, const int index);
@@ -120,10 +129,6 @@ void		ft_trim_command(const char *str, int *index, char *command);
 int			ft_get_str_location(const char *str, int *index);
 void		ft_route_command(const char *str, int *index);
 
-int			ft_handle_pwd(const char *command, int *index);
-void		ft_return_end(const char *command, int *index);
-int			ft_handle_cd(const char *command, int *index);
-
 void		ft_get_env(const char *key, char *value);
 void		ft_set_env(const char *key, char *value);
 void		ft_delete_env(const char *key);
@@ -133,12 +138,17 @@ int			ft_check_dir(const char *str);
 void		ft_get_command(const char *str, char *command);
 void		ft_check_home_dir(char *command);
 
-void		ft_return_end(const char *command, int *index);
+int			ft_check_last_command(const char *command);
+
+void		ft_flush_pipe(const char *str);
+
+int			ft_suppress_command(const char *str);
 
 int			ft_handle_pwd(const char *command, int *index);
-
+void		ft_return_end(const char *command, int *index);
+int			ft_handle_cd(const char *command, int *index);
 # define BIN "/bin/"
-# define USR_BIN "/usr/bin"
+# define USR_BIN "/usr/bin/"
 int			ft_handle_built_in(const char *command, int *index);
 
 #endif

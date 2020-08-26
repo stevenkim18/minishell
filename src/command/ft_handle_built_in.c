@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 14:25:39 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/25 17:18:43 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/26 16:56:55 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ char		*check_bin_path(char *command)
 		return (full_command);
 	return (NULL);
 }
+
 int			ft_handle_built_in_error(const char *command)
 {
 	char	error_str[1024];

@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/15 13:50:20 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/20 14:25:38 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/26 16:16:44 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ static void		ft_handle_read_result(char **command)
 	if (ft_verify_command(*command))
 		return ;
 	ft_set_index(0);
+	ft_set_last_index(ft_strlen(*command));
 	ft_exec_commnad(*command);
 	free(tmp_str);
 }
