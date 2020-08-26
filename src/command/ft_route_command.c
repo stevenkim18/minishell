@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/20 18:05:05 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/26 12:56:38 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/26 15:39:59 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,9 @@ void		ft_route_command(const char *str, int *index)
 		else if (!ft_check_pwd_exit_unset(str, index, i))
 			return ;
 		else
-			ft_exec_process(ft_handle_built_in, str, index); // TODO "|" ";"이 오는경우 무시 처리 // TODO "| grep 1" 처리 로직 생성
+		{
+			ft_exec_process(ft_handle_built_in, str, index); // TODO "|" ";" 또는 공백이 오는경우 무시 처리 // TODO "| grep 1" 처리 로직 생성
+		}
 	}
 	else
 		ft_handle_error(ENOMEM, NULL);

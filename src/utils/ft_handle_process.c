@@ -6,11 +6,18 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/15 15:48:21 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/26 12:52:13 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/26 16:38:24 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+static pid_t	g_pid = 0;
+
+pid_t			ft_get_pid(void)
+{
+	return (g_pid);
+}
 
 void			ft_end_process(const int error, int index, const pid_t pid)
 {
@@ -33,6 +40,7 @@ void			ft_start_process(pid_t *pid)
 
 	ft_open_pipe(ft_get_index_pipe());
 	ft_open_pipe(ft_get_error_pipe());
+	ft_set_fork_status(true);
 	*pid = fork();
 	wait(&wait_value);
 	if (*pid == 0)
@@ -42,12 +50,11 @@ void			ft_start_process(pid_t *pid)
 void			ft_exec_process(int (*ft_exec_command)(const char *, int *),
 								const char *command, int *index)
 {
-	pid_t		pid;
 	int			command_result;
 
-	ft_start_process(&pid);
+	ft_start_process(&g_pid);
 	command_result = 0;
-	if (pid == 0)
+	if (g_pid == 0)
 		command_result = ft_exec_command(command, index);
-	ft_end_process(command_result, *index, pid);
+	ft_end_process(command_result, *index, g_pid);
 }

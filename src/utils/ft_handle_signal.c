@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/16 15:11:17 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/26 13:02:58 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/26 16:38:56 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,30 +16,34 @@ void			ft_handle_parent_signal(int signal)
 {
 	if (SIGCHLD == signal)
 	{
-
 		ft_put_error(ft_get_int(ft_get_error_pipe()));
 		ft_set_index(ft_get_int(ft_get_index_pipe()));
+		ft_set_fork_status(false);
 	}
-	else if (SIGINT == signal || SIGQUIT == signal)
+	else if ((SIGINT == signal || SIGQUIT == signal))
 	{
 		ft_putstr_fd(IGNORE_INT, STDOUT);
-		if (SIGINT == signal)
+		if (!ft_get_fork_status())
 		{
-			ft_putstr_fd("1\n", STDOUT);
-			ft_putstr_fd(NEWLINE_STR, STDOUT);
-			ft_putstr_fd(SHELL_STR_L, STDOUT);
-			ft_put_error(ENOINT_P);
-		// TODO 자식 프로세스의 인터럽트에서 출력이 되는경우가 있음
+			if (SIGINT == signal)
+			{
+				ft_putstr_fd(NEWLINE_STR, STDOUT);
+				ft_putstr_fd(SHELL_STR_L, STDOUT);
+				ft_put_error(ENOINT_P);
+			}
+			else
+				ft_put_error(NO_ERROR);
 		}
 	}
 }
 
 void			ft_handle_child_signal(int signal)
 {
+	ft_putstr_fd(IGNORE_INT, STDOUT);
 	if (SIGINT == signal)
 		ft_end_process(ENOINT, ft_get_last_index(), 0);
 	else if (SIGQUIT == signal)
-		ft_end_process(ENOQUIT, ft_get_last_index(), 0);
+		ft_end_process(ENOQUIT, ft_get_last_index(), ft_get_pid());
 	// TODO 두 경우 모두 에러코드 출력 할 수 있도록 해야함
 }
 

@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/21 18:03:04 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/26 13:12:35 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/26 16:37:45 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,10 +85,13 @@ char		*ft_trim_str(const char *str);
 # define READ 0
 # define WRITE 1
 
+pid_t		ft_get_pid(void);
 void		ft_end_process(const int error, int index, const pid_t pid);
 void		ft_start_process(pid_t *pid);
 void		ft_exec_process(int (*ft_exec_command)(const char *, int *),
 								const char *command, int *index);
+bool		ft_get_fork_status(void);
+void		ft_set_fork_status(bool status);
 
 void		ft_put_error(const int error_num);
 int			ft_handle_error(const int error_num, void *content);
@@ -110,8 +113,8 @@ int			ft_get_last_index(void);
 void		ft_set_last_index(int index);
 
 void		ft_handle_parent_signal(int signal);
+void		ft_ignore_parent_signal(void);
 void		ft_handle_child_signal(int signal);
-void		ft_register_parent_signal(void);
 void		ft_register_child_signal(void);
 
 int			ft_verify_pipe(const char *command, const int index);
