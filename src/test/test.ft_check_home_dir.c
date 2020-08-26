@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/21 17:30:03 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/25 16:17:37 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/26 10:32:21 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ Test(ft_check_home_dir, basic)
 	str[6] = 's';
 	str[7] = 0;
 	ft_check_home_dir(str);
-	cr_expect_str_eq(str, "bin/ls");
+	cr_expect_str_eq(str, "~bin/ls");
 	str[0] = '~';
 	str[1] = '.';
 	str[2] = 'b';

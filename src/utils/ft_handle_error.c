@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/15 16:33:17 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/25 16:30:07 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/26 08:59:15 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,9 @@ int				ft_handle_error(const int error_num, void *content)
 		ft_putstr_fd(NEWLINE_STR, STDOUT);
 	}
 	tmp_container = g_error_num;
-	g_error_num = error_num;
+	if (error_num < 0)
+		g_error_num = error_num * -1;
+	else
+		g_error_num = error_num;
 	return (tmp_container);
 }

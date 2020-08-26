@@ -6,7 +6,7 @@
 /*   By: stevenkim <stevenkim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/15 15:48:21 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/25 16:41:26 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/25 17:07:46 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void			ft_end_process(const int error, int index, const pid_t pid)
 	}
 	else
 	{
-		ft_close_pipe(ft_get_data_pipe());
 		ft_close_pipe(ft_get_index_pipe());
 		ft_close_pipe(ft_get_error_pipe());
 	}
@@ -32,7 +31,6 @@ void			ft_start_process(pid_t *pid)
 {
 	int		wait_value;
 
-	ft_open_pipe(ft_get_data_pipe());
 	ft_open_pipe(ft_get_index_pipe());
 	ft_open_pipe(ft_get_error_pipe());
 	*pid = fork();
