@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/20 18:05:05 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/26 17:42:29 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/26 17:52:40 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ void		ft_route_command(const char *str, int *index)
 			return ;
 		else
 		{
-			if (ft_check_last(str + *index))
+			if (ft_check_last_command(str + *index))
 				ft_set_index(++(*index));
 			else
 				ft_exec_process(ft_handle_built_in, str, index);
