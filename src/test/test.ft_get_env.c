@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/21 17:59:22 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/21 18:21:04 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/26 11:33:21 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,7 @@ Test(ft_get_env, basic)
 	char command[1024];
 	ft_get_env("HOME", command);
 	cr_expect_str_eq(command, "/Users/dakim");
+	ft_get_env("HOMsfsfsfsfsfsfdE", command);
+	cr_expect_eq(*command, 0);
 }
 
