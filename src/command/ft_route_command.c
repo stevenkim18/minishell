@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/20 18:05:05 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/26 17:29:43 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/26 17:42:29 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int			ft_check_echo_cd(const char *str, int *index, int i)
 	|| ft_strnstr(str + i, ECHO_D, ft_strlen(ECHO_D))
 	|| ft_strnstr(str + i, ECHO_S, ft_strlen(ECHO_S)))
 	{
-		printf("%s\n", str + *index);
 		// TODO *(str + *index) == '|'인경우 파이프에서 데이터 빼내기
 		*index = i;
 		ft_trim_command(str, index, ECHO_STR);
@@ -43,6 +42,7 @@ int			ft_check_echo_cd(const char *str, int *index, int i)
 	|| ft_strnstr(str + i, CD_D, ft_strlen(CD_D))
 	|| ft_strnstr(str + i, CD_S, ft_strlen(CD_S)))
 	{
+		ft_flush_pipe(str + *index);
 		*index = i;
 		ft_trim_command(str, index, CD_STR);
 		ft_handle_cd(str, index);
@@ -59,6 +59,7 @@ int			ft_check_export_env(const char *str, int *index, int i)
 	|| ft_strnstr(str + i, EXPORT_D, ft_strlen(EXPORT_D))
 	|| ft_strnstr(str + i, EXPORT_S, ft_strlen(EXPORT_S)))
 	{
+		// TODO *(str + *index) == '|'인경우 파이프에서 데이터 빼내기
 		*index = i;
 		ft_trim_command(str, index, EXPORT_STR);
 		ft_exec_process(ft_test, str, index);
@@ -68,6 +69,7 @@ int			ft_check_export_env(const char *str, int *index, int i)
 	|| ft_strnstr(str + i, ENV_D, ft_strlen(ENV_D))
 	|| ft_strnstr(str + i, ENV_S, ft_strlen(ENV_S)))
 	{
+		// TODO *(str + *index) == '|'인경우 파이프에서 데이터 빼내기
 		*index = i;
 		ft_trim_command(str, index, ENV_STR);
 		ft_exec_process(ft_test, str, index);
@@ -85,6 +87,7 @@ int			ft_check_pwd_exit_unset(const char *str, int *index, int i)
 	else if (ft_strnstr(str + i, PWD_STR, ft_strlen(PWD_STR)) || ft_strnstr(str + i, PWD_D, ft_strlen(PWD_D))
 	|| ft_strnstr(str + i, PWD_S, ft_strlen(PWD_S)))
 	{
+		ft_flush_pipe(str + *index);
 		*index = i;
 		ft_trim_command(str, index, PWD_STR);
 		ft_exec_process(ft_handle_pwd, str, index);
@@ -94,6 +97,7 @@ int			ft_check_pwd_exit_unset(const char *str, int *index, int i)
 	|| ft_strnstr(str + i, UNSET_D, ft_strlen(UNSET_D))
 	|| ft_strnstr(str + i, UNSET_S, ft_strlen(UNSET_S)))
 	{
+		// TODO *(str + *index) == '|'인경우 파이프에서 데이터 빼내기
 		*index = i;
 		ft_trim_command(str, index, UNSET_STR);
 		ft_exec_process(ft_test, str, index);
