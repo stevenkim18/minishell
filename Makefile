@@ -10,7 +10,7 @@ SRC = main.c
 SRC_DIR = ./src/
 SRCS = $(addprefix $(SRC_DIR), $(SRC))
 
-UTIL = ft_handle_error.c ft_handle_pipe_one.c ft_handle_pipe_two.c ft_handle_process.c ft_handle_signal.c ft_handle_index.c ft_handle_fd.c ft_handle_env.c ft_check_dir.c ft_check_home_dir.c ft_get_command.c ft_check_fork.c
+UTIL = ft_handle_error.c ft_handle_pipe_one.c ft_handle_pipe_two.c ft_handle_process.c ft_handle_signal.c ft_handle_index.c ft_handle_fd.c ft_handle_env.c ft_check_dir.c ft_check_home_dir.c ft_get_command.c ft_check_fork.c ft_check_last.c ft_flush_pipe.c ft_return_end.c
 UTIL_DIR = ./src/utils/
 UTILS = $(addprefix $(UTIL_DIR), $(UTIL))
 
@@ -22,7 +22,7 @@ LIB_H = -I ./src/libft
 LIB = libft.a
 
 TEST_NAME = test.out
-TEST = test.ft_trim_str.c test.ft_handle_pipe.c test.ft_handle_error.c test.ft_get_char.c test.ft_verify_pipe.c test.ft_verify_semicolon.c test.ft_verify_command.c test.ft_get_command.c test.ft_get_env.c test.ft_check_home_dir.c test.ft_check_dir.c test.ft_set_env.c test.ft_delete_env.c
+TEST = test.ft_trim_str.c test.ft_handle_pipe.c test.ft_handle_error.c test.ft_get_char.c test.ft_verify_pipe.c test.ft_verify_semicolon.c test.ft_verify_command.c test.ft_get_command.c test.ft_get_env.c test.ft_check_home_dir.c test.ft_check_dir.c test.ft_set_env.c test.ft_delete_env.c test.ft_check_last.c
 TEST_DIR = ./src/test/
 TESTS = $(addprefix $(TEST_DIR), $(TEST))
 TEST_H = -I ~/.brew/include
