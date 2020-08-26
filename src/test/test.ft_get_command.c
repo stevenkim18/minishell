@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/21 16:05:55 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/21 16:24:57 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/26 09:00:33 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,7 @@ Test(ft_get_command, basic)
 	str = "\"\'\'    /bin/ls\'\'\" 123123";
 	ft_get_command(str, command);
 	cr_expect_str_eq(command, "    /bin/ls");
+	str = "lslsls";
+	ft_get_command(str, command);
+	cr_expect_str_eq(command, "lslsls");
 }
