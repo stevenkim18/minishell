@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/20 18:05:05 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/26 18:31:47 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/26 18:41:46 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int			ft_test(const char *str, int *index)
 	return (ENOCMD);
 }
 
-int			ft_check_echo_cd(const char *str, int *index, int i)
+int			ft_check_echo(const char *str, int *index, int i)
 {
 	if (ft_strnstr(str + i, ECHO_STR, ft_strlen(ECHO_STR))
 	|| ft_strnstr(str + i, ECHO_D, ft_strlen(ECHO_D))
@@ -36,20 +36,22 @@ int			ft_check_echo_cd(const char *str, int *index, int i)
 		// TODO *(str + *index) == '|'인경우 파이프에서 데이터 빼내기
 		*index = i;
 		ft_trim_command(str, index, ECHO_STR);
-		if (ft_suppress_command(str + *index))
 		ft_exec_process(ft_test, str, index);
 		return (0);
 	}
-	else if (ft_strnstr(str + i, CD_STR, ft_strlen(CD_STR))
+	return (1);
+}
+
+int			ft_check_cd(const char *str, int *index, int i)
+{
+	if (ft_strnstr(str + i, CD_STR, ft_strlen(CD_STR))
 	|| ft_strnstr(str + i, CD_D, ft_strlen(CD_D))
 	|| ft_strnstr(str + i, CD_S, ft_strlen(CD_S)))
 	{
 		ft_flush_pipe(str + *index);
 		if (ft_suppress_command(str + *index))
 		{
-			if (*(str + *index) == ';'
-			|| *(str + *index) == '|')
-				++(*index);
+			++(*index);
 			ft_return_end(str, index);
 			ft_send_str(EMPTY_STR, ft_get_data_pipe());
 		}
@@ -126,7 +128,9 @@ void		ft_route_command(const char *str, int *index)
 	if (str)
 	{
 		i = ft_get_str_location(str, index);
-		if (!ft_check_echo_cd(str, index, i))
+		if (!ft_check_echo(str, index, i))
+			return ;
+		else if (!ft_check_cd(str, index, i))
 			return ;
 		else if (!ft_check_export_env(str, index, i))
 			return ;
@@ -137,9 +141,7 @@ void		ft_route_command(const char *str, int *index)
 			if (ft_check_last_command(str + *index))
 				ft_set_index(++(*index));
 			else
-				ft_exec_process(ft_handle_built_in, str, index);
-				// TODO "| grep 1" 처리 로직 생성
-				// "| grep 1"인경우 무한반복 걸림
+				ft_exec_process(ft_handle_built_in, str, index); // TODO "| grep 1" 처리 로직 생성 // TODO "| grep 1"인경우 무한반복 걸림
 		}
 	}
 	else
