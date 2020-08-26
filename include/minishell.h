@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/21 18:03:04 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/26 12:57:51 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/26 13:09:29 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,7 @@ void		ft_return_end(const char *command, int *index);
 int			ft_handle_pwd(const char *command, int *index);
 
 # define BIN "/bin/"
-# define USR_BIN "/usr/bin"
+# define USR_BIN "/usr/bin/"
 int			ft_handle_built_in(const char *command, int *index);
 
 #endif
