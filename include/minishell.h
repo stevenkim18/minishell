@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stevenkim <stevenkim@student.42.fr>        +#+  +:+       +#+        */
+/*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/21 18:03:04 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/25 16:31:20 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/26 12:03:17 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,10 @@ void		ft_return_end(const char *command, int *index);
 int			ft_handle_cd(const char *command, int *index);
 
 void		ft_get_env(const char *key, char *value);
+void		ft_set_env(const char *key, char *value);
+void		ft_delete_env(const char *key);
+void		ft_print_env(void);
+
 int			ft_check_dir(const char *str);
 void		ft_get_command(const char *str, char *command);
 void		ft_check_home_dir(char *command);

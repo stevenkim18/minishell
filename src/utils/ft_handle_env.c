@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/21 18:00:59 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/26 11:31:08 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/26 12:02:28 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,33 @@ void		ft_set_env(const char *key, char *value)
 	}
 	free(tmp_str);
 	*(environ + i) = modify_str;
+}
+
+void		ft_delete_env(const char *key)
+{
+	int					i;
+	extern char			**environ;
+
+	i = -1;
+	while (*(environ + ++i))
+		if (ft_strnstr(*(environ + i), key, ft_strlen((char *)key)))
+			break ;
+	while (*(environ + i))
+	{
+		*(environ + i) = *(environ + i + 1);
+		++i;
+	}
+}
+
+void		ft_print_env(void)
+{
+	int					i;
+	extern char			**environ;
+
+	i = -1;
+	while (*(environ + ++i))
+	{
+		ft_putstr_fd(*(environ + i), STDOUT);
+		ft_putstr_fd(NEWLINE_STR, STDOUT);
+	}
 }
