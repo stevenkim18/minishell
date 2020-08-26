@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/21 18:03:04 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/26 12:03:17 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/26 12:57:51 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@
 # define ENOCMD 127
 # define ENODIR -127
 # define ENOINT 130
+# define ENOQUIT 1
 # define ENOTKN 258
 # define ENOTKN_P 258
 # define ENOTKN_S -258
@@ -102,8 +103,11 @@ char		*ft_get_str(int fd[2]);
 int			*ft_get_data_pipe(void);
 int			*ft_get_error_pipe(void);
 int			*ft_get_index_pipe(void);
+
 int			ft_get_index(void);
 void		ft_set_index(int index);
+int			ft_get_last_index(void);
+void		ft_set_last_index(int index);
 
 void		ft_handle_parent_signal(int signal);
 void		ft_handle_child_signal(int signal);

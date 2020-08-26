@@ -6,12 +6,11 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/20 18:05:05 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/26 09:57:24 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/26 12:56:38 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
 int			ft_test(const char *str, int *index)
 {
 	if (*str)
@@ -28,6 +27,8 @@ int			ft_test(const char *str, int *index)
 			++(*index);
 		}
 		ft_putstr_fd(NEWLINE_STR, STDOUT);
+		while (1)
+			;
 	}
 	return (ENOCMD);
 }
@@ -91,8 +92,7 @@ int			ft_check_pwd_exit_unset(const char *str, int *index, int i)
 	|| ft_strnstr(str + i, EXIT_D, ft_strlen(EXIT_D))
 	|| ft_strnstr(str + i, EXIT_S, ft_strlen(EXIT_S)))
 		exit(0);
-	else if (ft_strnstr(str + i, PWD_STR, ft_strlen(PWD_STR))
-	|| ft_strnstr(str + i, PWD_D, ft_strlen(PWD_D))
+	else if (ft_strnstr(str + i, PWD_STR, ft_strlen(PWD_STR)) || ft_strnstr(str + i, PWD_D, ft_strlen(PWD_D))
 	|| ft_strnstr(str + i, PWD_S, ft_strlen(PWD_S)))
 	{
 		// TODO *(str + *index) == '|'인경우 파이프에서 데이터 빼내기
