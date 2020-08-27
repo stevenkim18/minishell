@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/21 18:03:04 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/27 16:47:50 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/27 17:20:58 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,11 +150,12 @@ void		ft_join_command(const char *prefix, char *command);
 
 int			ft_suppress_command(const char *str);
 
-int				ft_check_num(const char *str);
+int			ft_check_num(const char *str);
 
 int			ft_handle_pwd(const char *command, int *index);
 void		ft_return_end(const char *command, int *index);
 int			ft_handle_cd(const char *command, int *index);
+int			ft_handle_exit(const char *str, int *index);
 # define BIN "/bin/"
 # define USR_BIN "/usr/bin/"
 int			ft_handle_built_in(const char *command, int *index);

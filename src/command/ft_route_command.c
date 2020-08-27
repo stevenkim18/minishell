@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/20 18:05:05 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/27 17:04:58 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/27 17:20:08 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,43 +69,9 @@ int			ft_check_exit(const char *str, int *index, int i)
 		}
 		else
 		{
-			char		command[1024];
-
 			*index = i;
 			ft_trim_command(str, index, EXIT_STR);
-			ft_get_command(str + *index, command);
-			if (ft_check_num(command) || 20 <= ft_strlen(command))
-			{
-				ft_putstr_fd(EXIT_STR, STDOUT);
-				ft_putstr_fd(NEWLINE_STR, STDOUT);
-				ft_join_command("exit: ", command);
-				ft_handle_error(ENONUMARG, command);
-				exit(ENONUMARG);
-			}
-			else
-			{
-				int			exit_code;
-				int			next_index;
-				char		next_command[1024];
-
-				next_index = ft_get_next_index(str + *index);
-				ft_get_command(str + *index + next_index, next_command);
-				if (*next_command)
-				{
-					ft_putstr_fd(EXIT_STR, STDOUT);
-					ft_putstr_fd(NEWLINE_STR, STDOUT);
-					ft_handle_error(ENOARGS, "exit");
-					ft_return_end(str, index);
-					ft_set_index(*index);
-					return (0);
-				}
-				else
-				{
-					exit_code = ft_atoi(command);
-					exit_code %= 256;
-					exit(exit_code);
-				}
-			}
+			return (ft_handle_exit(str, index));
 		}
 	}
 	return (1);
