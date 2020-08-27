@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/20 18:05:05 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/26 19:12:18 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/27 16:12:14 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,38 @@ int			ft_check_exit(const char *str, int *index, int i)
 			return (0);
 		}
 		else
-			exit(0);
+		{
+			char		command[1024];
+
+			*index = i;
+			ft_trim_command(str, index, EXIT_STR);
+			ft_get_command(str + *index, command);
+			if (ft_check_num(command) || 20 <= ft_strlen(command))
+			{
+				ft_putstr_fd(EXIT_STR, STDOUT);
+				ft_putstr_fd(NEWLINE_STR, STDOUT);
+				ft_join_command("exit: ", command);
+				ft_handle_error(ENONUMARG, command);
+				exit(ENONUMARG);
+			}
+			else
+			{
+				exit(300);
+			}
+		}
+
+		// 1. 첫 번 째 인자 받아옴
+		// 2. 첫 번 째 인자가 숫자인경우
+			// 2-1. 이후 인자가 오는지 파악
+		// 3. 첫번째 인자가 문자인경우
+
+		// 0인경우 성공 1 ~ 255 인경우 오류코드
+		// 문자인경우 255
+		// 인자가 많은경우 1
+		// 첫번 째 인자가 숫자인경우 => 인자가 많음으로 처리
+		// TODO 뒤의 인자가 숫자가 아닌경우 "bash: exit: dfsf: numeric argument required" 출력 및 종료 / 에러코드 = 255
+		// TODO 뒤의 인자가 한개 이상인경우 "bash: exit: too many arguments" 출력 및 종료 / 에러코드 = 1
+		// TODO 합쳐진경우 체크 필요
 	}
 	return (1);
 }
