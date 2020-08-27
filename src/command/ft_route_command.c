@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/20 18:05:05 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/27 16:12:14 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/27 16:22:45 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,11 @@ int			ft_check_exit(const char *str, int *index, int i)
 			}
 			else
 			{
-				exit(300);
+				int			exit_code;
+
+				exit_code = ft_atoi(command);
+				printf("exit = %d\n", exit_code);
+				exit(exit_code);
 			}
 		}
 
