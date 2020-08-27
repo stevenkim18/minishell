@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/15 16:33:17 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/27 16:13:47 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/27 17:03:40 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ static bool		ft_chcek_custom_error(const int error_num)
 		return (true);
 	else if (error_num == ENONUMARG)
 		return (true);
+	else if (error_num == ENOARGS)
+		return (true);
 	return (false);
 }
 
@@ -48,6 +50,8 @@ static void		ft_print_custom_error(const int error_num)
 		ft_putstr_fd(ENOTKN_S_STR, STDOUT);
 	else if (error_num == ENONUMARG)
 		ft_putstr_fd(ENONUMARG_STR, STDOUT);
+	else if (error_num == ENOARGS)
+		ft_putstr_fd(ENOARGS_STR, STDOUT);
 }
 
 void			ft_put_error(const int error_num)

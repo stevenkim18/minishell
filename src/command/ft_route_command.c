@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/20 18:05:05 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/27 16:22:45 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/27 17:04:58 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,25 +85,28 @@ int			ft_check_exit(const char *str, int *index, int i)
 			else
 			{
 				int			exit_code;
+				int			next_index;
+				char		next_command[1024];
 
-				exit_code = ft_atoi(command);
-				printf("exit = %d\n", exit_code);
-				exit(exit_code);
+				next_index = ft_get_next_index(str + *index);
+				ft_get_command(str + *index + next_index, next_command);
+				if (*next_command)
+				{
+					ft_putstr_fd(EXIT_STR, STDOUT);
+					ft_putstr_fd(NEWLINE_STR, STDOUT);
+					ft_handle_error(ENOARGS, "exit");
+					ft_return_end(str, index);
+					ft_set_index(*index);
+					return (0);
+				}
+				else
+				{
+					exit_code = ft_atoi(command);
+					exit_code %= 256;
+					exit(exit_code);
+				}
 			}
 		}
-
-		// 1. 첫 번 째 인자 받아옴
-		// 2. 첫 번 째 인자가 숫자인경우
-			// 2-1. 이후 인자가 오는지 파악
-		// 3. 첫번째 인자가 문자인경우
-
-		// 0인경우 성공 1 ~ 255 인경우 오류코드
-		// 문자인경우 255
-		// 인자가 많은경우 1
-		// 첫번 째 인자가 숫자인경우 => 인자가 많음으로 처리
-		// TODO 뒤의 인자가 숫자가 아닌경우 "bash: exit: dfsf: numeric argument required" 출력 및 종료 / 에러코드 = 255
-		// TODO 뒤의 인자가 한개 이상인경우 "bash: exit: too many arguments" 출력 및 종료 / 에러코드 = 1
-		// TODO 합쳐진경우 체크 필요
 	}
 	return (1);
 }
