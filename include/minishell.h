@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/21 18:03:04 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/27 15:27:42 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/27 16:07:29 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,6 +145,7 @@ void		ft_get_command(const char *str, char *command);
 void		ft_check_home_dir(char *command);
 
 int			ft_check_last_command(const char *command);
+void		ft_join_command(const char *prefix, char *command);
 
 int			ft_suppress_command(const char *str);
 
