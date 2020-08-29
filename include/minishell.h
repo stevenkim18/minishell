@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/21 18:03:04 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/26 18:31:31 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/27 17:20:58 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,13 @@
 # define ENOTKN 258
 # define ENOTKN_P 258
 # define ENOTKN_S -258
+# define ENONUMARG 255
+# define ENOARGS 1
 
 # define ENOCMD_STR ": command not found"
 # define ENODIR_STR ": No such file or directory"
+# define ENOARGS_STR ": too many arguments"
+# define ENONUMARG_STR ": numeric argument required"
 # define ENOTKN_S_STR "syntax error near unexpected token `;\'"
 # define ENOTKN_P_STR "syntax error near unexpected token `|\'"
 
@@ -108,6 +112,7 @@ char		*ft_get_str(int fd[2]);
 int			*ft_get_data_pipe(void);
 int			*ft_get_error_pipe(void);
 int			*ft_get_index_pipe(void);
+void		ft_flush_pipe(const char *str);
 
 int			ft_get_index(void);
 void		ft_set_index(int index);
@@ -118,6 +123,7 @@ void		ft_handle_parent_signal(int signal);
 void		ft_ignore_parent_signal(void);
 void		ft_handle_child_signal(int signal);
 void		ft_register_child_signal(void);
+void		ft_register_parent_signal(void);
 
 int			ft_verify_pipe(const char *command, const int index);
 int			ft_verify_semicolon(const char *command, const int index);
@@ -136,17 +142,20 @@ void		ft_print_env(void);
 
 int			ft_check_dir(const char *str);
 void		ft_get_command(const char *str, char *command);
+int			ft_get_next_index(const char *str);
 void		ft_check_home_dir(char *command);
 
 int			ft_check_last_command(const char *command);
-
-void		ft_flush_pipe(const char *str);
+void		ft_join_command(const char *prefix, char *command);
 
 int			ft_suppress_command(const char *str);
+
+int			ft_check_num(const char *str);
 
 int			ft_handle_pwd(const char *command, int *index);
 void		ft_return_end(const char *command, int *index);
 int			ft_handle_cd(const char *command, int *index);
+int			ft_handle_exit(const char *str, int *index);
 # define BIN "/bin/"
 # define USR_BIN "/usr/bin/"
 int			ft_handle_built_in(const char *command, int *index);

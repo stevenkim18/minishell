@@ -6,7 +6,7 @@
 /*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/20 18:05:05 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/26 19:12:18 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/27 17:20:08 by dakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,11 @@ int			ft_check_exit(const char *str, int *index, int i)
 			return (0);
 		}
 		else
-			exit(0);
+		{
+			*index = i;
+			ft_trim_command(str, index, EXIT_STR);
+			return (ft_handle_exit(str, index));
+		}
 	}
 	return (1);
 }
