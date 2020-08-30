@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: stevenkim <stevenkim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/21 18:03:04 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/27 17:20:58 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/31 02:50:08 by stevenkim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,5 +159,8 @@ int			ft_handle_exit(const char *str, int *index);
 # define BIN "/bin/"
 # define USR_BIN "/usr/bin/"
 int			ft_handle_built_in(const char *command, int *index);
+
+char        *ft_change_envs_to_data(const char *str);
+char        **ft_get_command_and_data(const char *str);
 
 #endif

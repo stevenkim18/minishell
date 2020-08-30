@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_handle_built_in.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: stevenkim <stevenkim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 14:25:39 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/26 16:56:55 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/31 02:59:37 by stevenkim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,11 @@ int			ft_handle_built_in(const char *command, int *index)
 	char			*full_command;
 	char			**new_arg;
 
+	if (!(new_arg = ft_get_command_and_data(command)))
+			return (ENOMEM);	
 	ft_return_end(command, index);
-	if ((full_command = check_bin_path((char *)command)))
+	if ((full_command = check_bin_path((char *)new_arg[0])))
 	{
-		if (!(new_arg = (char **)malloc(sizeof(char*) * (1 + 1))))
-			return (ENOMEM);
-		new_arg[0] = (char *)command;
-		new_arg[1] = NULL;
 		ft_send_int(*index, ft_get_index_pipe());
 		ft_send_int(NO_ERROR, ft_get_error_pipe());
 		execve(full_command, new_arg, environ);
