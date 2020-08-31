@@ -6,7 +6,7 @@
 /*   By: stevenkim <stevenkim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 03:03:03 by seunkim           #+#    #+#             */
-/*   Updated: 2020/08/31 02:52:50 by stevenkim        ###   ########.fr       */
+/*   Updated: 2020/09/01 01:16:25 by stevenkim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void        ft_cut_datas(char *new_str, char ***datas, int *idx, int *tmp)
             while (new_str[*idx] != '\'' && new_str[*idx] != '\"' 
                     && new_str[*idx] != ' ' && new_str[*idx] != 0)
                 (*idx)++;
-            *(*datas)++ = ft_strndup((new_str + *tmp), *idx - *tmp); 
+            *(*datas)++ = ft_strndup((new_str + *tmp), *idx - *tmp);
         }
         else if (new_str[*idx] == ' ')
             (*idx)++;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_route_command.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dakim <dakim@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: stevenkim <stevenkim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/20 18:05:05 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/27 17:20:08 by dakim            ###   ########.fr       */
+/*   Updated: 2020/08/31 23:42:03 by stevenkim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int			ft_check_echo_pwd(const char *str, int *index, int i)
 	{// TODO *(str + *index) == '|'인경우 파이프에서 데이터 빼내기
 		*index = i;
 		ft_trim_command(str, index, ECHO_STR);
-		ft_exec_process(ft_test, str, index);
+		ft_exec_process(ft_handle_echo, str, index);
 		return (0);
 	}
 	else if (ft_strnstr(str + i, PWD_STR, ft_strlen(PWD_STR))

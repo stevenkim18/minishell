@@ -6,7 +6,7 @@
 /*   By: stevenkim <stevenkim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/21 18:03:04 by dakim             #+#    #+#             */
-/*   Updated: 2020/08/31 02:50:08 by stevenkim        ###   ########.fr       */
+/*   Updated: 2020/08/31 23:40:27 by stevenkim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,6 +152,7 @@ int			ft_suppress_command(const char *str);
 
 int			ft_check_num(const char *str);
 
+int			ft_handle_echo(const char *command, int *index);
 int			ft_handle_pwd(const char *command, int *index);
 void		ft_return_end(const char *command, int *index);
 int			ft_handle_cd(const char *command, int *index);

@@ -6,7 +6,7 @@
 /*   By: stevenkim <stevenkim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/31 02:43:09 by seunkim           #+#    #+#             */
-/*   Updated: 2020/08/31 02:46:52 by stevenkim        ###   ########.fr       */
+/*   Updated: 2020/09/01 01:16:35 by stevenkim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,9 @@ void        ft_change_env(const char *str, char (*tmp)[1024], int *i, int *j)
     int     x;
     
     x = 0;
-    while (str[++(*i)] != ' ')
-        key[x++] = str[*i];
+    (*i)++;
+    while (str[(*i)] != ' ' && str[*i] != 0 && str[*i] != '$')
+        key[x++] = str[(*i)++];
     key[x] = 0;
     ft_get_env(key, value);
     x = 0;
@@ -58,5 +59,6 @@ char        *ft_change_envs_to_data(const char *str)
         else
             tmp[j++] = str[i++];
     }
+    tmp[j] = 0;
     return (ft_strdup(tmp));
 }
