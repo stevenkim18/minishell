@@ -11,14 +11,14 @@ SRC_DIR = ./src/
 SRCS = $(addprefix $(SRC_DIR), $(SRC))
 
 UTIL = ft_handle_error.c ft_handle_pipe_one.c ft_handle_pipe_two.c ft_handle_process.c ft_handle_signal.c ft_handle_index.c \
-		ft_handle_fd.c ft_handle_env.c ft_check_dir.c ft_check_home_dir.c ft_get_command.c \
+		ft_handle_fd.c ft_env_utils.c ft_env_utils2.c ft_check_dir.c ft_check_home_dir.c ft_get_command.c \
 		ft_check_fork.c ft_check_last_command.c ft_return_end.c ft_suppress_command.c ft_check_num.c ft_join_command.c \
 		ft_change_envs_to_data.c ft_get_command_and_data.c
 UTIL_DIR = ./src/utils/
 UTILS = $(addprefix $(UTIL_DIR), $(UTIL))
 
 COMMAND = ft_handle_command.c ft_exec_command.c ft_handle_pwd.c ft_verify_command.c ft_route_command.c \
-			ft_handle_built_in.c ft_handle_cd.c ft_handle_exit.c ft_handle_echo.c
+			ft_handle_built_in.c ft_handle_cd.c ft_handle_exit.c ft_handle_echo.c ft_handle_env.c ft_handle_export.c ft_handle_unset.c
 COMMAND_DIR = ./src/command/
 COMMANDS = $(addprefix $(COMMAND_DIR), $(COMMAND))
 

@@ -74,5 +74,11 @@ int			ft_handle_built_in(const char *command, int *index)
 		ft_send_int(NO_ERROR, ft_get_error_pipe());
 		execve(full_command, new_arg, environ);
 	}
+	else
+	{
+		ft_send_int(*index, ft_get_index_pipe());
+		ft_send_int(NO_ERROR, ft_get_error_pipe());
+		execve(new_arg[0], new_arg, environ);
+	}
 	return (ft_handle_built_in_error(command));
 }

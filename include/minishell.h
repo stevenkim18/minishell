@@ -139,6 +139,10 @@ void		ft_get_env(const char *key, char *value);
 void		ft_set_env(const char *key, char *value);
 void		ft_delete_env(const char *key);
 void		ft_print_env(void);
+void		ft_add_new_env(char *new_arg);
+void    	ft_add_envs(char *new_arg);
+void		ft_print_new_envs(char **new_arg);
+int			ft_validate_key_value(char *arg);
 
 int			ft_check_dir(const char *str);
 void		ft_get_command(const char *str, char *command);
@@ -157,6 +161,10 @@ int			ft_handle_pwd(const char *command, int *index);
 void		ft_return_end(const char *command, int *index);
 int			ft_handle_cd(const char *command, int *index);
 int			ft_handle_exit(const char *str, int *index);
+int			ft_handle_env(const char *command, int *index);
+int			ft_handle_export(const char *command, int *index);
+int			ft_handle_unset(const char *command, int *index);
+
 # define BIN "/bin/"
 # define USR_BIN "/usr/bin/"
 int			ft_handle_built_in(const char *command, int *index);
