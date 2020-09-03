@@ -12,11 +12,16 @@
 
 #include "minishell.h"
 
-// $? --> 리턴 코드로 바꾸기
 void        ft_change_return_code(char (*tmp)[1024], int *i, int *j)
 {
-    (*tmp)[(*j)++] = '0';
-    *i += 2;
+    char    *error_code;
+    int     idx;
+
+    error_code = ft_itoa(ft_handle_error(NO_ERROR, NULL));
+    idx = 0;
+    while (error_code[idx])
+        (*tmp)[(*j)++] = error_code[idx++];
+    *i += (idx + 1);
 }
 
 void        ft_change_env(const char *str, char (*tmp)[1024], int *i, int *j)
