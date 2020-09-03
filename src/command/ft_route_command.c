@@ -112,7 +112,8 @@ int			ft_check_export_env(const char *str, int *index, int i)
 		// TODO *(str + *index) == '|'인경우 파이프에서 데이터 빼내기
 		*index = i;
 		ft_trim_command(str, index, EXPORT_STR);
-		ft_exec_process(ft_test, str, index);
+		ft_handle_export(str, index);
+		ft_set_index(*index);
 		return (0);
 	}
 	else if (ft_strnstr(str + i, ENV_STR, ft_strlen(ENV_STR))
@@ -122,7 +123,8 @@ int			ft_check_export_env(const char *str, int *index, int i)
 		// TODO *(str + *index) == '|'인경우 파이프에서 데이터 빼내기
 		*index = i;
 		ft_trim_command(str, index, ENV_STR);
-		ft_exec_process(ft_test, str, index);
+		ft_handle_env(str, index);
+		ft_set_index(*index);
 		return (0);
 	}
 	return (1);
@@ -136,7 +138,8 @@ int			ft_check_unset(const char *str, int *index, int i)
 	{// TODO *(str + *index) == '|'인경우 파이프에서 데이터 빼내기
 		*index = i;
 		ft_trim_command(str, index, UNSET_STR);
-		ft_exec_process(ft_test, str, index);
+		ft_handle_unset(str, index);
+		ft_set_index(*index);
 		return (0);
 	}
 	return (1);

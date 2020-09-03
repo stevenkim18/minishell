@@ -31,6 +31,7 @@ int		ft_handle_cd(const char *command, int *index)
 	ft_set_env("OLDPWD", path);
 	getcwd(path, 1024);
 	ft_set_env("PWD", path);
+	ft_delete_env("HOME");
 	return (NO_ERROR);
 }
 // TODO cd 사용시 환경변수 변하는지 테스트 하지 않았음
